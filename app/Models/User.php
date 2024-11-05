@@ -21,6 +21,20 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+
+        // team information
+        'agency',
+        'robot_category',
+        'participant_one_name',
+        'participant_one_nim_or_nis',
+        'participant_two_name',
+        'participant_two_nim_or_nis',
+        'participant_three_name',
+        'participant_three_nim_or_nis',
+        'participant_four_name',
+        'participant_four_nim_or_nis',
+        'participant_five_name',
+        'participant_five_nim_or_nis',
     ];
 
     /**
@@ -44,5 +58,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
     }
 }

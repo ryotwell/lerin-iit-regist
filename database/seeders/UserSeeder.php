@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,10 +14,20 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+        $user = User::create([
             'name' => 'Ryo Otwell',
+            'role' => 'admin',
             'email' => 'ryotwell@icloud.com',
-            'password' => bcrypt('123')
+            'password' => bcrypt('123'),
+
+            // team information
+            'agency' => 'Universitas Hamzanwadi',
+            'robot_category' => 'Robot Sumo',
+        ]);
+
+        Payment::create([
+            'user_id' => $user->id,
+            'payment_method' => 'bank_transfer',
         ]);
     }
 }

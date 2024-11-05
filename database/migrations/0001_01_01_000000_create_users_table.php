@@ -14,9 +14,31 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('role', ['admin', 'user'])->default('user');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            // team information
+            $table->string('agency');
+            $table->enum('robot_category', ['Robot Sumo', 'Obstacle Avoidance']);
+
+            $table->string('participant_one_name')->nullable();
+            $table->string('participant_one_nim_or_nis')->nullable();
+
+            $table->string('participant_two_name')->nullable();
+            $table->string('participant_two_nim_or_nis')->nullable();
+
+            $table->string('participant_three_name')->nullable();
+            $table->string('participant_three_nim_or_nis')->nullable();
+
+            $table->string('participant_four_name')->nullable();
+            $table->string('participant_four_nim_or_nis')->nullable();
+
+            $table->string('participant_five_name')->nullable();
+            $table->string('participant_five_nim_or_nis')->nullable();
+            // end of team information
+
             $table->rememberToken();
             $table->timestamps();
         });
