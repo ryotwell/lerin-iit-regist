@@ -19,6 +19,16 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user() && auth()->user()->hasRole('admin');
+    }
+
+    public static function canAccess(array $parameters = []): bool
+    {
+        return auth()->user() && auth()->user()->hasRole('admin');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

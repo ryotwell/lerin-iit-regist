@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Pages\Auth;
+namespace App\Filament\Pages;
 
 use App\Events\UserRegistered;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
@@ -20,7 +20,6 @@ class CustomRegister extends BaseRegister
     {
         return $form
             ->schema([
-                View::make('components.sign-up-creds'),
                 $this->getNameFormComponent()->label('Nama Tim'),
                 TextInput::make('agency')
                     ->required()
@@ -30,9 +29,13 @@ class CustomRegister extends BaseRegister
                 ->required()
                 ->label('Kategori Robot')
                 ->options([
-                        'Robot Sumo' => 'Robot Sumo',
-                        'Obstacle Avoidance' => 'Obstacle Avoidance',
+                        'sumo' => 'Robot Sumo',
+                        'avoider' => 'Avoider',
                 ]),
+
+                View::make('components.divider'),
+                View::make('components.sign-up-creds'),
+
                 $this->getEmailFormComponent()
                     ->label('Alamat Email'),
                 $this->getPasswordFormComponent(),
@@ -69,31 +72,15 @@ class CustomRegister extends BaseRegister
                             ->nullable()
                             ->label('NIM/NIS'),
                 ]),
-                Fieldset::make('Anggota Tim 4')
-                    ->schema([
-                        TextInput::make('participant_four_name')
-                            ->nullable()
-                            ->label('Nama'),
-                        TextInput::make('participant_four_nim_or_nis')
-                            ->nullable()
-                            ->label('NIM/NIS'),
-                ]),
-                Fieldset::make('Anggota Tim 5')
-                    ->schema([
-                        TextInput::make('participant_five_name')
-                            ->nullable()
-                            ->label('Nama'),
-                        TextInput::make('participant_five_nim_or_nis')
-                            ->nullable()
-                            ->label('NIM/NIS'),
-                ]),
+
+                View::make('components.admin-contact'),
             ]);
     }
 
     public function register(): ?RegistrationResponse
     {
         try {
-            $this->rateLimit(2);
+            $this->rateLimit(20);
         } catch (TooManyRequestsException $exception) {
             $this->getRateLimitedNotification($exception)?->send();
 

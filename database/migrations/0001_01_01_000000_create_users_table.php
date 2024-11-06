@@ -21,7 +21,7 @@ return new class extends Migration
 
             // team information
             $table->string('agency');
-            $table->enum('robot_category', ['Robot Sumo', 'Obstacle Avoidance']);
+            $table->enum('robot_category', ['avoider', 'sumo']);
 
             $table->string('participant_one_name')->nullable();
             $table->string('participant_one_nim_or_nis')->nullable();
@@ -31,12 +31,6 @@ return new class extends Migration
 
             $table->string('participant_three_name')->nullable();
             $table->string('participant_three_nim_or_nis')->nullable();
-
-            $table->string('participant_four_name')->nullable();
-            $table->string('participant_four_nim_or_nis')->nullable();
-
-            $table->string('participant_five_name')->nullable();
-            $table->string('participant_five_nim_or_nis')->nullable();
             // end of team information
 
             $table->rememberToken();

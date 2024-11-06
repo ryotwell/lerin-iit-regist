@@ -20,6 +20,11 @@ class PaymentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user() && auth()->user()->hasRole('admin');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -34,6 +39,8 @@ class PaymentResource extends Resource
                                 ->ignore($component->getLivewire()->record->id ?? null);
                         },
                     ]),
+                    // ->hidden(fn () => !Auth::user()->hasRole('admin'))
+                    // ->disabled(fn () => !Auth::user()->hasRole('admin')),
                 Forms\Components\Select::make('status')
                     ->options([
                         'pending' => 'Pending',
@@ -42,15 +49,20 @@ class PaymentResource extends Resource
                     ])
                     ->default('pending')
                     ->required(),
+                    // ->hidden(fn () => !Auth::user()->hasRole('admin'))
+                    // ->disabled(fn () => !Auth::user()->hasRole('admin')),
                 // payment method
                 Forms\Components\Select::make('payment_method')
-                ->options([
-                        'bank_transfer' => 'Bank Transfer',
-                        'cash' => 'Cash',
-                ])->required(),
+                    ->options([
+                            'bank_transfer' => 'Bank Transfer',
+                            'cash' => 'Cash',
+                    ])
+                    ->label('Metode Pembayaran')
+                    ->required(),
                 Forms\Components\FileUpload::make('receipt_image')
                     ->directory('uploads/payments')
-                    ->image(), 
+                    ->label('Bukti Pembayaran')
+                    ->image(),
             ]);
     }
 
@@ -101,6 +113,7 @@ class PaymentResource extends Resource
             'index' => Pages\ListPayments::route('/'),
             'create' => Pages\CreatePayment::route('/create'),
             'edit' => Pages\EditPayment::route('/{record}/edit'),
+            'upload' => Pages\UploadPaymentReceipt::route('/{record}/upload'),
         ];
     }
 }

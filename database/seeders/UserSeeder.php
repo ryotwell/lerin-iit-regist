@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
 
             // team information
             'agency' => 'Universitas Hamzanwadi',
-            'robot_category' => 'Robot Sumo',
+            'robot_category' => 'sumo',
         ]);
 
         Payment::create([
