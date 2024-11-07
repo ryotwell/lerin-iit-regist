@@ -3,6 +3,7 @@ import { ModeToggle } from '@/components/mode-toggle';
 import { motion } from 'framer-motion';
 import * as React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Button } from './components/ui/button';
 import { HeroHighlight, Highlight } from './components/ui/hero-highlight';
 import { RainbowButton } from './components/ui/rainbow-button';
 import { CategoryAppleCardsCarousel } from './comps/category';
@@ -20,12 +21,24 @@ const App: React.FC = () => {
     return (
         <>
             <div className="content absolute top-0 left-0 z-10 py-6 w-full flex justify-between items-center">
-                <img
-                    className="w-28 bg-black"
+                {/* <img
+                    className="w-28 hidden dark:block"
                     src="/lerin.png"
                     alt="Lerin NTB"
+                /> */}
+                <img
+                    className="w-28"
+                    src="/lerin-black.png"
+                    alt="Lerin NTB"
                 />
-                <ModeToggle />
+                <div className="flex items-center">
+                    <ModeToggle />
+                    <Button className="ml-2" asChild>
+                        <a href="/panel/login">
+                            Login
+                        </a>
+                    </Button>
+                </div>
             </div>
 
             <HeroHighlight
