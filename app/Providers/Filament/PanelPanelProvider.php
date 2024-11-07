@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\CustomRegister;
+use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -25,6 +26,7 @@ class PanelPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->defaultThemeMode(ThemeMode::Dark)
             ->id('panel')
             ->path('panel')
             ->login()
