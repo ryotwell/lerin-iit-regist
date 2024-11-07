@@ -1,7 +1,7 @@
 import { Card, Carousel } from '@/components/ui/apple-cards-carousel'
 import { Button } from '@/components/ui/button'
 import React from 'react'
-import { SumoArena, SumoAssessment, SumoCompetitionRules, SumoRobotSpesification, SumoViolationsAndPenalties, Timeline } from './contents'
+import { SumoArena, SumoRobotSpesification, Timeline } from './contents'
 
 type SubCard = {
     title: string
@@ -9,22 +9,25 @@ type SubCard = {
 }
 
 type CardData = {
+    id: string
     category: string
     title: string
     src: string
     participant: string
     challengeType: string
+    feeRegistration: string
     subCards?: SubCard[]
 }
 
 const data: CardData[] = [
     {
-        category: 'Tingkat SMA/SMK/MA',
-        title: 'Obstacle Avoidance Driving Game',
-        src: '/categories/GZhQx-ka8AA9M4f.jpeg',
-        participant: '1 team of 2 people',
-        challengeType:
-            'Make a robot that avoids collision with obstacles while moving from starting position to goal in an arena.',
+        id: "avoider",
+        category: 'Tingkat SMP/SMA Sederajat',
+        title: 'Avoider (obstacle)',
+        src: '/categories/avoider.jpg',
+        participant: '1 tim terdiri dari 3 orang',
+        challengeType: 'Buatlah robot yang menghindari tabrakan dengan rintangan saat bergerak dari posisi awal ke tujuan di dalam arena.',
+        feeRegistration: 'Rp. 25.000',
         subCards: [
             {
                 title: 'Timeline',
@@ -35,11 +38,13 @@ const data: CardData[] = [
         ],
     },
     {
-        category: 'Tingkat Mahasiswa/Umum',
+        id: "sumo",
+        category: 'Tingkat Mahasiswa',
         title: 'Sumo Game',
-        src: '/categories/GZhQx-ka8AA9M4f.jpeg',
-        participant: '1 team of 5 people',
-        challengeType: 'Each robot has to push the opponent out of the ring, in order to win the game.',
+        src: '/categories/sumo.jpg',
+        participant: '1 tim terdiri dari 3 orang',
+        challengeType: 'Setiap robot harus mendorong lawan keluar dari arena untuk memenangkan permainan.',
+        feeRegistration: 'Rp. 75.000',
         subCards: [
             {
                 title: 'Timeline',
@@ -59,24 +64,24 @@ const data: CardData[] = [
                     return <SumoArena />
                 },
             },  
-            {
-                title: 'Competition Rules',
-                body: () => {
-                    return <SumoCompetitionRules />
-                },
-            },
-            {
-                title: 'Assessment',
-                body: () => {
-                    return <SumoAssessment />
-                },
-            },
-            {
-                title: 'Violations and Penalties',
-                body: () => {
-                    return <SumoViolationsAndPenalties />
-                },
-            },
+            // {
+            //     title: 'Competition Rules',
+            //     body: () => {
+            //         return <SumoCompetitionRules />
+            //     },
+            // },
+            // {
+            //     title: 'Assessment',
+            //     body: () => {
+            //         return <SumoAssessment />
+            //     },
+            // },
+            // {
+            //     title: 'Violations and Penalties',
+            //     body: () => {
+            //         return <SumoViolationsAndPenalties />
+            //     },
+            // },
         ],
     },
 ]
@@ -91,7 +96,7 @@ export const CategoryAppleCardsCarousel: React.FC = () => {
     ))
 
     return (
-        <div className="content w-full h-full py-20 bg-gradient-to-b from-slate-300 dark:from-slate-900">
+        <div className="content w-full h-full py-20 bg-gradient-to-b from-slate-300 dark:from-slate-900" id="categories">
             <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
                 Choose
             </h2>
@@ -104,38 +109,47 @@ export const CategoryAppleCardsCarousel: React.FC = () => {
 }
 
 const CreateContent: React.FC<CardData> = ({
+    id,
     category,
     participant,
     challengeType,
     subCards,
+    feeRegistration,
 }) => {
     return (
         <>
             <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
                 <div className="flex mb-4">
                     <div className="min-w-32 dark:text-slate-100/50">
-                        Participant
+                        Peserta
                     </div>
                     <div className="px-4">:</div>
                     <div>{participant}</div>
                 </div>
                 <div className="flex mb-4">
                     <div className="min-w-32 dark:text-slate-100/50">
-                        Study Levels
+                        Tingkat Studi
                     </div>
                     <div className="px-4">:</div>
                     <div>{category}</div>
                 </div>
                 <div className="flex mb-4">
                     <div className="min-w-32 dark:text-slate-100/50">
-                        Challenge Type
+                        Biaya Pendaftaran
+                    </div>
+                    <div className="px-4">:</div>
+                    <div>{feeRegistration}</div>
+                </div>
+                <div className="flex mb-4">
+                    <div className="min-w-32 dark:text-slate-100/50">
+                        Jenis Tantangan
                     </div>
                     <div className="px-4">:</div>
                     <div>{challengeType}</div>
                 </div>
                 <div>
                     <Button asChild>
-                        <a href="/panel/register">
+                        <a href={`/panel/register?robot_category=${id}`}>
                             Daftar Sekarang
                         </a>
                     </Button>

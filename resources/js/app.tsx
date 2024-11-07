@@ -48,13 +48,15 @@ const App: React.FC = () => {
                     className="text-3xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
                 >
                     Lerin is taking on the
+                    <br />
                     <Highlight className="text-black dark:text-white">
                         IIT Challenge Program
-                    </Highlight>
-                    . Join us on a journey to make a difference.
+                    </Highlight>.
+                    <br />
+                    Join us on a journey to make a difference.
                 </motion.h1>
                 <div className="flex justify-center mt-8">
-                    <RainbowButton href="/panel/register">Daftar Sekarang</RainbowButton>
+                    <RainbowButton href="#categories">Daftar Sekarang</RainbowButton>
                 </div>
             </HeroHighlight>
 

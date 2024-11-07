@@ -26,12 +26,14 @@ class CustomRegister extends BaseRegister
                     ->label('Asal Instansi')
                     ->placeholder('Contoh: Universitas Hamzanwadi/SMKN 1 Selong'),
                 Select::make('robot_category')
-                ->required()
-                ->label('Kategori Robot')
-                ->options([
-                        'sumo' => 'Robot Sumo',
-                        'avoider' => 'Avoider',
-                ]),
+                    ->required()
+                    ->label('Kategori Robot')
+                    ->options([
+                            'sumo' => 'Sumo Game',
+                            'avoider' => 'Avoider (obstacle)',
+                    ])
+                    ->placeholder('Pilih salah satu kategori robot')
+                    ->default(request()->query('robot_category')),
 
                 View::make('components.divider'),
                 View::make('components.sign-up-creds'),
@@ -52,7 +54,7 @@ class CustomRegister extends BaseRegister
                             ->label('Nama'),
                         TextInput::make('participant_one_nim_or_nis')
                             ->required()
-                            ->label('NIM/NIS'),
+                            ->label('NIM / NIS'),
                 ]),
                 Fieldset::make('Anggota Tim 2')
                     ->schema([
@@ -61,16 +63,16 @@ class CustomRegister extends BaseRegister
                             ->label('Nama'),
                         TextInput::make('participant_two_nim_or_nis')
                             ->required()
-                            ->label('NIM/NIS'),
+                            ->label('NIM / NIS'),
                 ]),
                 Fieldset::make('Anggota Tim 3')
                     ->schema([
                         TextInput::make('participant_three_name')
-                            ->nullable()
+                            ->required()
                             ->label('Nama'),
                         TextInput::make('participant_three_nim_or_nis')
-                            ->nullable()
-                            ->label('NIM/NIS'),
+                            ->required()
+                            ->label('NIM / NIS'),
                 ]),
 
                 View::make('components.admin-contact'),
