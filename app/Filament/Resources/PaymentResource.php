@@ -39,8 +39,6 @@ class PaymentResource extends Resource
                                 ->ignore($component->getLivewire()->record->id ?? null);
                         },
                     ]),
-                    // ->hidden(fn () => !Auth::user()->hasRole('admin'))
-                    // ->disabled(fn () => !Auth::user()->hasRole('admin')),
                 Forms\Components\Select::make('status')
                     ->options([
                         'pending' => 'Pending',
@@ -49,8 +47,6 @@ class PaymentResource extends Resource
                     ])
                     ->default('pending')
                     ->required(),
-                    // ->hidden(fn () => !Auth::user()->hasRole('admin'))
-                    // ->disabled(fn () => !Auth::user()->hasRole('admin')),
                 // payment method
                 Forms\Components\Select::make('payment_method')
                     ->options([
@@ -62,7 +58,7 @@ class PaymentResource extends Resource
                 Forms\Components\FileUpload::make('receipt_image')
                     ->directory('uploads/payments')
                     ->label('Bukti Pembayaran')
-                    ->image(),
+                    ->image()
             ]);
     }
 
@@ -71,13 +67,22 @@ class PaymentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')
-                    ->numeric(),
-                // Tables\Columns\ImageColumn::make('photo')
-                //     ->label('Photo')
-                //     ->disk('public')
-                //     ->width(50)
-                //     ->height(50),
+                    ->numeric()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('status'),
+                // Tables\Columns\ImageColumn::make('receipt_image')
+                //     ->label('Bukti Pembayaran')
+                //     ->disk('public') // Jika Anda menyimpan file di disk 'public'
+                //     ->url(fn ($record) => asset('storage/' . $record->receipt_image))
+                //     ->openUrlInNewTab(),
+                Tables\Columns\TextColumn::make('receipt_image')
+                    ->label('Bukti Pembayaran')
+                    ->getStateUsing(fn () => 'Lihat')
+                    ->url(fn ($record) => asset('storage/' . $record->receipt_image))
+                    ->openUrlInNewTab()
+                    ->extraAttributes([
+                        'class' => 'text-blue-500 underline hover:text-blue-700'
+                    ]),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -88,7 +93,13 @@ class PaymentResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('status')
+                ->options([
+                    'pending' => 'Pending',
+                    'approved' => 'Approved',
+                    'rejected' => 'Rejected',
+                ])
+                ->label('Status Pembayaran'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
