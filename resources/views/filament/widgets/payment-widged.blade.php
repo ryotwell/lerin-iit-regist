@@ -20,17 +20,17 @@
                     <tr>
                         <td>Bank</td>
                         <td>:</td>
-                        <td class="font-medium">BRI</td>
+                        <td class="font-medium">{{ config('lerin.bank.name') }}</td>
                     </tr>
                     <tr>
                         <td>No. Rekening</td>
                         <td>:</td>
-                        <td class="font-medium">92817212129</td>
+                        <td class="font-medium">{{ config('lerin.bank.account_number') }}</td>
                     </tr>
                     <tr>
                         <td>Atas Nama</td>
                         <td>:</td>
-                        <td class="font-medium">Muhammad Farid Hidayat</td>
+                        <td class="font-medium">{{ config('lerin.bank.account_name') }}</td>
                     </tr>
                 </table>
             </div>
