@@ -37,9 +37,9 @@
             <div class="text-gray-600 dark:text-gray-300 mb-8">
                 <p class="mb-4">Setelah melakukan pembayaran, silahkan upload bukti pembayaran melalui tombol di bawah ini.</p>
 
-                <a href="/panel/payments/{{ auth()->user()->payment->id }}/upload" class="bg-slate-900 dark:bg-slate-300 dark:text-slate-950 text-white px-4 py-2 rounded-xl hover:shadow-xl duration-100">
+                <x-filament::link href="/panel/payments/{{ auth()->user()->payment->id }}/upload" class="underline">
                     Upload bukti pembayaran
-                </a>
+                </x-filament::link>
             </div>
             <p class="text-gray-600 dark:text-gray-300 mb-8">
                 Jika anda sudah melakukan pembayaran, silahkan tunggu admin untuk melakukan konfirmasi pada pembayaran anda.

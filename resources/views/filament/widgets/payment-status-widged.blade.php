@@ -21,9 +21,8 @@ $approved = auth()->user()->payment->status === 'approved';
                 @endif
             </div>
         </div>
-        <a href="/panel/payments/{{ auth()->user()->payment->id }}/upload" class="text-sm underline text-blue-500 flex items-center">
+        <x-filament::link href="/panel/payments/{{ auth()->user()->payment->id }}/upload" class="underline">
             Upload bukti pembayaran
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
-        </a>
+        </x-filament::link>
     </x-filament::section>
 </x-filament-widgets::widget>

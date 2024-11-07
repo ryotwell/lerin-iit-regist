@@ -1,8 +1,8 @@
 <x-filament-widgets::widget>
     <x-filament::section>
-        <h1 class="text-lg font-semibold">Informasi Tim</h1>
+        <h1 class="text-lg font-semibold mb-6">Informasi Tim</h1>
 
-        <div class="relative overflow-x-auto">
+        <div class="relative overflow-x-auto mb-6">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -60,6 +60,9 @@
                     </td>
                 </tr>
             </table>
-
+        </div>
+        <x-filament::link href="/">
+            Edit Informasi Tim
+        </x-filament::link>
     </x-filament::section>
 </x-filament-widgets::widget>
