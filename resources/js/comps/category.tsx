@@ -97,12 +97,18 @@ export const CategoryAppleCardsCarousel: React.FC = () => {
 
     return (
         <div className="content w-full h-full py-20 bg-gradient-to-b from-slate-300 dark:from-slate-900" id="categories">
-            <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-                Choose
-            </h2>
-            <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-                Your Category
-            </h2>
+            <div data-aos="fade-up">
+                <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+                    Choose
+                </h2>
+                <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+                    Your Category
+                </h2>
+            </div>
+            {/* <WordPullUp
+                className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-7xl md:leading-[5rem]"
+                words="Word Pull Up"
+            /> */}
             <Carousel items={cards} />
         </div>
     )

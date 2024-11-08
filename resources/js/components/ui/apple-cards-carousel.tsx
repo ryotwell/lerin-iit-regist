@@ -269,11 +269,11 @@ export const Card = ({
                     className="object-cover absolute z-10 inset-0 h-full brightness-50"
                 />
                 <div className="flex items-center justify-center w-full absolute z-50 bottom-2 lg:h-full lg:bottom-0 px-2 lg:px-0">
-                    <ShimmerButton className="shadow-2xl group w-full lg:w-40 bg-purple-600 hover:bg-purple-700 text-slate-200 !rounded-2xl" background="linear-gradient(to right, #7928CA, #FF0080)">
+                    <ShimmerButton className="shadow-2xl group w-full lg:w-40 bg-purple-600 hover:bg-purple-700 text-slate-200" background="linear-gradient(to right, #7928CA, #FF0080)">
                         <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-                            Pilih
+                            Choose
                         </span>
-                        <MoveRight className="ml-2 group-hover:translate-x-2 duration-150" />
+                        <MoveRight className="ml-2 group-hover:translate-x-2 duration-150 text-white" />
                     </ShimmerButton>
                     {/* <Button size="lg" className="group w-full lg:w-auto bg-purple-600 hover:bg-purple-700 text-slate-200 rounded-2xl">
                         Pilih

@@ -1,5 +1,7 @@
 import Footer from '@/components/footer';
 import { ModeToggle } from '@/components/mode-toggle';
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { motion } from 'framer-motion';
 import * as React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -18,20 +20,23 @@ const App: React.FC = () => {
         }
     }, [])
 
+    React.useEffect(() => {
+        AOS.init({
+          duration: 500, // Durasi animasi dalam milidetik
+          once: true,     // Apakah animasi hanya terjadi sekali saat scroll
+        });
+    }, [])
+
     return (
         <>
             <div className="content absolute top-0 left-0 z-10 py-6 w-full flex justify-between items-center">
-                {/* <img
-                    className="w-28 hidden dark:block"
-                    src="/lerin.png"
-                    alt="Lerin NTB"
-                /> */}
                 <img
-                    className="w-28"
+                    className="w-28 rounded-md"
                     src="/lerin-black.png"
                     alt="Lerin NTB"
+                    data-aos="fade-right"
                 />
-                <div className="flex items-center">
+                <div className="flex items-center" data-aos="fade-left">
                     <ModeToggle />
                     <Button className="ml-2" asChild>
                         <a href="/panel/login">
@@ -69,7 +74,7 @@ const App: React.FC = () => {
                     Join us on a journey to make a difference.
                 </motion.h1>
                 <div className="flex justify-center mt-8">
-                    <RainbowButton href="#categories">Daftar Sekarang</RainbowButton>
+                    <RainbowButton href="#categories" data-aos="fade-up" data-aos-delay="500">Daftar Sekarang</RainbowButton>
                 </div>
             </HeroHighlight>
 
