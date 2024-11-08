@@ -47,7 +47,7 @@ class CustomRegister extends BaseRegister
                 View::make('components.divider'),
                 View::make('components.sign-up-team'),
 
-                Fieldset::make('Anggota Tim 1 (ketua)')
+                Fieldset::make('Anggota Tim 1 (Penanggung Jawab Tim)')
                     ->schema([
                         TextInput::make('participant_one_name')
                             ->required()
