@@ -25,11 +25,17 @@ class PaymentResource extends Resource
         return auth()->user() && auth()->user()->hasRole('admin');
     }
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Daftar Pembayaran';
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\Select::make('user_id')
+                    ->label('Tim')
                     ->relationship('user', 'name')
                     ->searchable()
                     ->required()
@@ -40,10 +46,11 @@ class PaymentResource extends Resource
                         },
                     ]),
                 Forms\Components\Select::make('status')
+                    ->label('Status Pembayaran')
                     ->options([
-                        'pending' => 'Pending',
-                        'approved' => 'Approved',
-                        'rejected' => 'Rejected',
+                        'pending' => 'Menunggu Pembayaran',
+                        'approved' => 'Pembayaran Diterima',
+                        'rejected' => 'Pembayaran Ditolak',
                     ])
                     ->default('pending')
                     ->required(),
@@ -67,14 +74,15 @@ class PaymentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')
+                    ->label('Nama Tim')
                     ->numeric()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('status'),
-                // Tables\Columns\ImageColumn::make('receipt_image')
-                //     ->label('Bukti Pembayaran')
-                //     ->disk('public') // Jika Anda menyimpan file di disk 'public'
-                //     ->url(fn ($record) => asset('storage/' . $record->receipt_image))
-                //     ->openUrlInNewTab(),
+                Tables\Columns\TextColumn::make('payment_method')
+                    ->label('Metode Pembayaran')
+                    ->getStateUsing(fn ($record) => getPaymentMethod($record->payment_method)),
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Status Pembayaran')
+                    ->getStateUsing(fn ($record) => getPaymentStatus($record->status)),
                 Tables\Columns\TextColumn::make('receipt_image')
                     ->label('Bukti Pembayaran')
                     ->getStateUsing(fn () => 'Lihat')
@@ -95,9 +103,9 @@ class PaymentResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
                 ->options([
-                    'pending' => 'Pending',
-                    'approved' => 'Approved',
-                    'rejected' => 'Rejected',
+                    'pending' => 'Menunggu Pembayaran',
+                    'approved' => 'Pembayaran Diterima',
+                    'rejected' => 'Pembayaran Ditolak',
                 ])
                 ->label('Status Pembayaran'),
             ])

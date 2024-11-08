@@ -10,13 +10,21 @@ class ExportDataWidget extends Widget
 {
     protected static string $view = 'filament.widgets.export-data-widget';
 
+    protected static ?int $sort = 1;
+
     public function export()
     {
         if (!auth()->user()->hasRole('admin')) {
             abort(403, 'Akses tidak diizinkan.');
         }
 
-        return Excel::download(new UsersExport, 'data.xlsx');
+        if (request()->has('robot_category')) {
+            $robot_category = request()->robot_category;
+        } else {
+            $robot_category = null;
+        }
+
+        return Excel::download(new UsersExport($robot_category), 'data.xlsx');
     }
 
     public static function canView(): bool

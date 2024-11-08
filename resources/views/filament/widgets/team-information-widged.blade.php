@@ -61,7 +61,7 @@
                 </tr>
             </table>
         </div>
-        <x-filament::link href="/">
+        <x-filament::link href="{{ config('lerin.admin.whatsapp') }}" class="underline" target="_blank">
             Edit Informasi Tim
         </x-filament::link>
     </x-filament::section>

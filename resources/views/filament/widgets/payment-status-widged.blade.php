@@ -7,7 +7,7 @@ $approved = auth()->user()->payment->status === 'approved';
     <x-filament::section>
         <div class="flex justify-between mb-3">
             <div class="font-bold">
-                Status Pendaftaran
+                Status Pembayaran
             </div>
             <div>
                 @if ($approved)
