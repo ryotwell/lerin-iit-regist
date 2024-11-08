@@ -54,6 +54,9 @@ class CustomRegister extends BaseRegister
                             ->label('Nama'),
                         TextInput::make('participant_one_nim_or_nis')
                             ->required()
+                            ->numeric()
+                            ->minLength(4)
+                            ->maxLength(15)
                             ->label('NIM / NIS'),
                 ]),
                 Fieldset::make('Anggota Tim 2')
@@ -63,6 +66,9 @@ class CustomRegister extends BaseRegister
                             ->label('Nama'),
                         TextInput::make('participant_two_nim_or_nis')
                             ->required()
+                            ->numeric()
+                            ->minLength(4)
+                            ->maxLength(15)
                             ->label('NIM / NIS'),
                 ]),
                 Fieldset::make('Anggota Tim 3')
@@ -72,6 +78,9 @@ class CustomRegister extends BaseRegister
                             ->label('Nama'),
                         TextInput::make('participant_three_nim_or_nis')
                             ->required()
+                            ->numeric()
+                            ->minLength(4)
+                            ->maxLength(15)
                             ->label('NIM / NIS'),
                 ]),
 

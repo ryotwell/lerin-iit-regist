@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@
 
     <!-- Scripts -->
     @viteReactRefresh
-    @vite(['resources/js/app.tsx', 'resources/css/test.css'])
+    @vite(['resources/js/app.tsx', 'resources/css/app.css'])
 </head>
 <body class="font-sans antialiased">
     <div id="root"></div>

@@ -28,7 +28,12 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Anggota 1
+                        <div>
+                            Anggota 1
+                        </div>
+                        <div class="text-xs text-gray-500">
+                            (Penanggung Jawab Tim)
+                        </div>
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :

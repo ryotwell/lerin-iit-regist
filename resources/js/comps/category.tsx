@@ -39,7 +39,7 @@ const data: CardData[] = [
     },
     {
         id: "sumo",
-        category: 'Tingkat Mahasiswa',
+        category: 'Tingkat Mahasiswa/Umum',
         title: 'Sumo Game',
         src: '/categories/sumo.jpg',
         participant: '1 tim terdiri dari 3 orang',
