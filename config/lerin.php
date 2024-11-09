@@ -7,7 +7,7 @@ return [
         'account_name' => 'Muhammad Farid Hidayat',
     ],
     'admin' => [
-        'phone' => '6287830292632',
-        'whatsapp' => 'https://wa.me/6287830292632',
+        'phone' => '6285737074723',
+        'whatsapp' => 'https://wa.me/6285737074723',
     ]
 ];

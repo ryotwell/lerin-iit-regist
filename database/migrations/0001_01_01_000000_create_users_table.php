@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->enum('role', ['admin', 'user'])->default('user');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
             // team information
             $table->string('agency');
             $table->enum('robot_category', ['avoider', 'sumo']);
+            $table->string('whatsapp_number')->nullable();
 
             $table->string('participant_one_name')->nullable();
             $table->string('participant_one_nim_or_nis')->nullable();
@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('participant_three_nim_or_nis')->nullable();
             // end of team information
 
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

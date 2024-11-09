@@ -35,14 +35,14 @@
                 </table>
             </div>
             <div class="text-gray-600 dark:text-gray-300 mb-8">
-                <p class="mb-4">Setelah melakukan pembayaran, silahkan upload bukti pembayaran melalui tombol di bawah ini.</p>
+                <p class="mb-4">Setelah melakukan transfer, silahkan upload bukti transfer melalui tombol di bawah ini.</p>
 
                 <x-filament::link href="/panel/payments/{{ auth()->user()->payment->id }}/upload" class="underline">
                     Upload bukti pembayaran
                 </x-filament::link>
             </div>
             <p class="text-gray-600 dark:text-gray-300 mb-8">
-                Jika anda sudah melakukan pembayaran, silahkan tunggu admin untuk melakukan konfirmasi pada pembayaran anda.
+                Jika sudah melakukan transfer, silahkan tunggu admin untuk melakukan konfirmasi pada pembayaran anda.
             </p>
             @endif
             <x-admin-contact />

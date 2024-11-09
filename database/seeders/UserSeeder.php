@@ -20,6 +20,8 @@ class UserSeeder extends Seeder
             'email' => 'ryotwell@icloud.com',
             'password' => bcrypt('123'),
 
+            'whatsapp_number' => '08123456789',
+
             // team information
             'agency' => 'Universitas Hamzanwadi',
             'robot_category' => 'sumo',

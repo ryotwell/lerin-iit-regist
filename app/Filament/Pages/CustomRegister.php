@@ -20,11 +20,13 @@ class CustomRegister extends BaseRegister
     {
         return $form
             ->schema([
-                $this->getNameFormComponent()->label('Nama Tim'),
+                $this->getNameFormComponent()
+                    ->label('Nama Tim')
+                    ->helperText('Gunakan nama tim yang berbeda dari yang lain untuk memudahkan kami dalam membedakan tim-tim'),
                 TextInput::make('agency')
-                    ->required()
                     ->label('Asal Instansi')
-                    ->placeholder('Contoh: Universitas Hamzanwadi/SMKN 1 Selong'),
+                    ->helperText('Contoh: Universitas Hamzanwadi/SMKN 1 Selong')
+                    ->required(),
                 Select::make('robot_category')
                     ->required()
                     ->label('Kategori Robot')
@@ -40,9 +42,10 @@ class CustomRegister extends BaseRegister
 
                 $this->getEmailFormComponent()
                     ->label('Alamat Email'),
-                $this->getPasswordFormComponent(),
+                $this->getPasswordFormComponent()
+                    ->label('Buat Password'),
                 $this->getPasswordConfirmationFormComponent()
-                    ->label('Konfirmasi Password'),
+                    ->label('Ketik Ulang Password'),
 
                 View::make('components.divider'),
                 View::make('components.sign-up-team'),
@@ -50,14 +53,17 @@ class CustomRegister extends BaseRegister
                 Fieldset::make('Anggota Tim 1 (Penanggung Jawab Tim)')
                     ->schema([
                         TextInput::make('participant_one_name')
-                            ->required()
-                            ->label('Nama'),
+                            ->label('Nama')
+                            ->required(),
                         TextInput::make('participant_one_nim_or_nis')
+                            ->label('NIM / NIS')
+                            ->required()
+                            ->numeric(),
+                        TextInput::make('whatsapp_number')
+                            ->label('Nomor Whatsapp')
                             ->required()
                             ->numeric()
-                            ->minLength(4)
-                            ->maxLength(15)
-                            ->label('NIM / NIS'),
+                            ->columnSpanFull(),
                 ]),
                 Fieldset::make('Anggota Tim 2')
                     ->schema([
@@ -65,11 +71,9 @@ class CustomRegister extends BaseRegister
                             ->required()
                             ->label('Nama'),
                         TextInput::make('participant_two_nim_or_nis')
+                            ->label('NIM / NIS')
                             ->required()
-                            ->numeric()
-                            ->minLength(4)
-                            ->maxLength(15)
-                            ->label('NIM / NIS'),
+                            ->numeric(),
                 ]),
                 Fieldset::make('Anggota Tim 3')
                     ->schema([
@@ -77,11 +81,9 @@ class CustomRegister extends BaseRegister
                             ->required()
                             ->label('Nama'),
                         TextInput::make('participant_three_nim_or_nis')
+                            ->label('NIM / NIS')
                             ->required()
-                            ->numeric()
-                            ->minLength(4)
-                            ->maxLength(15)
-                            ->label('NIM / NIS'),
+                            ->numeric(),
                 ]),
 
                 View::make('components.admin-contact'),

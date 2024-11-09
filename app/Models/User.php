@@ -25,10 +25,14 @@ class User extends Authenticatable
         // team information
         'agency',
         'robot_category',
+        'whatsapp_number',
+
         'participant_one_name',
         'participant_one_nim_or_nis',
+
         'participant_two_name',
         'participant_two_nim_or_nis',
+
         'participant_three_name',
         'participant_three_nim_or_nis',
     ];
