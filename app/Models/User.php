@@ -27,14 +27,14 @@ class User extends Authenticatable
         'robot_category',
         'whatsapp_number',
 
+        'responsible_person_name',
+        'responsible_person_nim_or_nis',
+
         'participant_one_name',
         'participant_one_nim_or_nis',
 
         'participant_two_name',
         'participant_two_nim_or_nis',
-
-        'participant_three_name',
-        'participant_three_nim_or_nis',
     ];
 
     /**

@@ -23,14 +23,14 @@ return new class extends Migration
             $table->enum('robot_category', ['avoider', 'sumo']);
             $table->string('whatsapp_number')->nullable();
 
+            $table->string('responsible_person_name')->nullable();
+            $table->string('responsible_person_nim_or_nis')->nullable();
+
             $table->string('participant_one_name')->nullable();
             $table->string('participant_one_nim_or_nis')->nullable();
 
             $table->string('participant_two_name')->nullable();
             $table->string('participant_two_nim_or_nis')->nullable();
-
-            $table->string('participant_three_name')->nullable();
-            $table->string('participant_three_nim_or_nis')->nullable();
             // end of team information
 
             $table->timestamp('email_verified_at')->nullable();

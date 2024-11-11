@@ -50,28 +50,29 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        <div>
-                            Whatsapp
-                        </div>
-                        <div class="text-xs text-gray-500 font-normal">
-                            (Penanggung Jawab Tim)
-                        </div>
+                        No. Whatsapp
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
                     </th>
                     <td class="px-6 py-4">
-                        {{ auth()->user()->whatsapp_number }}
+                        {{ auth()->user()->whatsapp_number ?? '-' }}
                     </td>
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        <div>
-                            Anggota 1
-                        </div>
-                        <div class="text-xs text-gray-500 font-normal">
-                            (Penanggung Jawab Tim)
-                        </div>
+                        Penanggung Jawab Tim
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        :
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ auth()->user()->responsible_person_name }} - {{ auth()->user()->responsible_person_nim_or_nis ?? '-' }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Anggota 1
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
@@ -89,17 +90,6 @@
                     </th>
                     <td class="px-6 py-4">
                         {{ auth()->user()->participant_two_name }} - {{ auth()->user()->participant_two_nim_or_nis ?? '-' }}
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="col" class="px-6 py-3">
-                        Anggota 3
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        :
-                    </th>
-                    <td class="px-6 py-4">
-                        {{ auth()->user()->participant_three_name }} - {{ auth()->user()->participant_three_nim_or_nis ?? '-' }}
                     </td>
                 </tr>
             </table>

@@ -29,12 +29,13 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
             'Kategori Robot',
             'Status Pembayaran',
 
+            'Penanggung Jawab',
             'Nama Peserta 1',
-            'NIM/NIS Peserta 1',
             'Nama Peserta 2',
+
+            'NIM/NIS Peserta 1',
             'NIM/NIS Peserta 2',
-            'Nama Peserta 3',
-            'NIM/NIS Peserta 3',
+            'NIM/NIS Penanggung Jawab',
         ];
     }
 
@@ -48,12 +49,12 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
             ($user->robot_category == 'avoider') ? 'Avoider (Obstacle)' : 'Sumo Game',
             ($user->payment->status == 'approved') ? 'Lunas' : 'Belum Lunas',
 
+            $user->responsible_person_name,
             $user->participant_one_name,
-            $user->participant_one_nim_or_nis,
             $user->participant_two_name,
+            $user->responsible_person_nim_or_nis,
+            $user->participant_one_nim_or_nis,
             $user->participant_two_nim_or_nis,
-            $user->participant_three_name,
-            $user->participant_three_nim_or_nis,
         ];
     }
 
@@ -93,6 +94,6 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
             $query->where('robot_category', $this->robot_category);
         }
 
-        return $query->with('payment')->get();
+        return $query->where('role', 'user')->with('payment')->get();
     }
 }

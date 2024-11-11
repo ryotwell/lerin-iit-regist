@@ -50,20 +50,29 @@ class CustomRegister extends BaseRegister
                 View::make('components.divider'),
                 View::make('components.sign-up-team'),
 
-                Fieldset::make('Anggota Tim 1 (Penanggung Jawab Tim)')
+                Fieldset::make('Penanggung Jawab')
                     ->schema([
-                        TextInput::make('participant_one_name')
+                        TextInput::make('responsible_person_name')
                             ->label('Nama')
                             ->required(),
-                        TextInput::make('participant_one_nim_or_nis')
+                        TextInput::make('responsible_person_nim_or_nis')
                             ->label('NIM / NIS')
                             ->required()
                             ->numeric(),
                         TextInput::make('whatsapp_number')
                             ->label('Nomor Whatsapp')
-                            ->required()
                             ->numeric()
                             ->columnSpanFull(),
+                ]),
+                Fieldset::make('Anggota Tim 1')
+                    ->schema([
+                        TextInput::make('participant_one_name')
+                            ->required()
+                            ->label('Nama'),
+                        TextInput::make('participant_one_nim_or_nis')
+                            ->label('NIM / NIS')
+                            ->required()
+                            ->numeric(),
                 ]),
                 Fieldset::make('Anggota Tim 2')
                     ->schema([
@@ -71,16 +80,6 @@ class CustomRegister extends BaseRegister
                             ->required()
                             ->label('Nama'),
                         TextInput::make('participant_two_nim_or_nis')
-                            ->label('NIM / NIS')
-                            ->required()
-                            ->numeric(),
-                ]),
-                Fieldset::make('Anggota Tim 3')
-                    ->schema([
-                        TextInput::make('participant_three_name')
-                            ->required()
-                            ->label('Nama'),
-                        TextInput::make('participant_three_nim_or_nis')
                             ->label('NIM / NIS')
                             ->required()
                             ->numeric(),

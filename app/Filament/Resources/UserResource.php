@@ -58,12 +58,20 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required(),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required(),
-
-                Forms\Components\Fieldset::make('Anggota Tim 1 (ketua)')
+                Forms\Components\Fieldset::make('Penanggung Jawab')
+                    ->schema([
+                        Forms\Components\TextInput::make('responsible_person_name')
+                            ->required()
+                            ->label('Nama'),
+                        Forms\Components\TextInput::make('responsible_person_nim_or_nis')
+                            ->required()
+                            ->label('NIM / NIS'),
+                            Forms\Components\TextInput::make('whatsapp_number')
+                            ->label('Nomor Whatsapp')
+                            ->numeric()
+                            ->columnSpanFull(),
+                ]),
+                Forms\Components\Fieldset::make('Anggota Tim 1')
                     ->schema([
                         Forms\Components\TextInput::make('participant_one_name')
                             ->required()
@@ -78,15 +86,6 @@ class UserResource extends Resource
                             ->required()
                             ->label('Nama'),
                         Forms\Components\TextInput::make('participant_two_nim_or_nis')
-                            ->required()
-                            ->label('NIM / NIS'),
-                ]),
-                Forms\Components\Fieldset::make('Anggota Tim 3')
-                    ->schema([
-                        Forms\Components\TextInput::make('participant_three_name')
-                            ->required()
-                            ->label('Nama'),
-                        Forms\Components\TextInput::make('participant_three_nim_or_nis')
                             ->required()
                             ->label('NIM / NIS'),
                 ]),
