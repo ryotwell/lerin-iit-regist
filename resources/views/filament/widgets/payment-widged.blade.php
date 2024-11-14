@@ -15,7 +15,9 @@
             </div>
             @else
             <div class="text-gray-600 dark:text-gray-300 mb-8">
-                <p class="mb-4">Langkah selanjutnya menyelesaikan biaya pendaftaran melalui transfer bank sebesar <span class="font-bold">Rp. 50.000</span> ke rekening berikut :</p>
+                <p class="mb-4">Langkah selanjutnya menyelesaikan biaya pendaftaran melalui transfer bank sebesar
+                    <span class="font-bold">{{ getFeeRegistration(auth()->user()->robot_category) }}</span> ke rekening berikut :
+                </p>
                 <table>
                     <tr>
                         <td>Bank</td>
