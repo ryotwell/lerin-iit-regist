@@ -46,20 +46,20 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
     {
         return [
             $user->id,
-            $user->name,
-            $user->agency,
+            $user->name ?? '-',
+            $user->agency ?? '-',
             getCategoryName($user->robot_category),
             getPaymentStatus($user->payment->status),
             getPaymentMethod($user->payment->payment_method),
 
-            $user->responsible_person_name,
-            $user->whatsapp_number,
+            $user->responsible_person_name ?? '-',
+            $user->whatsapp_number ?? '-',
 
-            $user->participant_one_name,
-            $user->participant_two_name,
+            $user->participant_one_name ?? '-',
+            $user->participant_two_name ?? '-',
 
-            $user->participant_one_nim_or_nis,
-            $user->participant_two_nim_or_nis,
+            $user->participant_one_nim_or_nis ?? '-',
+            $user->participant_two_nim_or_nis ?? '-',
 
             $user->email,
         ];
