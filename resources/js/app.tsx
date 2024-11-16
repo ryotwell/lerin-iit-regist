@@ -5,6 +5,7 @@ import "aos/dist/aos.css";
 import { motion } from 'framer-motion';
 import * as React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Faq } from './components/faq';
 import { Button } from './components/ui/button';
 import { HeroHighlight, Highlight } from './components/ui/hero-highlight';
 import { RainbowButton } from './components/ui/rainbow-button';
@@ -79,6 +80,18 @@ const App: React.FC = () => {
             </HeroHighlight>
 
             <CategoryAppleCardsCarousel />
+
+            <div className="content w-full h-full py-20 " id="categories">
+                <div data-aos="fade-up">
+                    <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+                        {`Pertanyaan Yang `}
+                    </h2>
+                    <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+                        {`Sering Di Tanyakan (FAQ)`}
+                    </h2>
+                </div>
+                <Faq />
+            </div>
 
             <Footer />
         </>
