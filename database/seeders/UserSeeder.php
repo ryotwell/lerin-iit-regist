@@ -38,13 +38,12 @@ class UserSeeder extends Seeder
             'user_id' => $user->id,
         ]);
 
-        // create 10 users with payments
-        User::factory(100)->create()->each(function ($user) {
-            Payment::create([
-                'user_id' => $user->id,
-                'payment_method' => Arr::random(['bank_transfer', 'cash']),
-                'status' => Arr::random(['pending', 'approved', 'rejected']),
-            ]);
-        });
+        // User::factory(100)->create()->each(function ($user) {
+        //     Payment::create([
+        //         'user_id' => $user->id,
+        //         'payment_method' => Arr::random(['bank_transfer', 'cash']),
+        //         'status' => Arr::random(['pending', 'approved', 'rejected']),
+        //     ]);
+        // });
     }
 }
