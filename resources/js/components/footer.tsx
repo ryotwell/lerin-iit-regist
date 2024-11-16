@@ -8,7 +8,7 @@ export function FooterSection() {
                         className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
                     >
                         <img
-                            className="h-10"
+                            className="h-10 rounded-lg"
                             src="/lerin-black.png"
                             alt="Lerin NTB"
                         />

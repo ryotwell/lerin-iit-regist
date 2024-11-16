@@ -26,8 +26,8 @@ export function FaqSection() {
     const [questions, setQuestions] = React.useState<FaqQuestionType[]>(faqQuestions)
 
     return (
-        <div className="content w-full h-full py-20 " id="categories">
-            <div data-aos="fade-up">
+        <div className="content w-full h-full py-20 " id="categories" data-aos="fade-up">
+            <div>
                 <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
                     {`Pertanyaan Yang `}
                 </h2>

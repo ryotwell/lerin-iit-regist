@@ -84,13 +84,14 @@ const App: React.FC = () => {
                         </span>
                         <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
                     </AnimatedGradientText>
-                    Lerin is taking on the
+                    UNHAZ x LERIN presents the
                     <br />
                     <Highlight className="text-black dark:text-white">
-                        IIT Challenge Program
+                        Robotic Competition
                     </Highlight>.
                     <br />
-                    Join us on a journey to make a difference.
+                    {/* Join us and showcase your innovation! */}
+                    Show your team's skill and innovation!
                 </motion.h1>
                 <div className="flex justify-center mt-8">
                     <RainbowButton href="#categories" data-aos="fade-up" data-aos-delay="500">Daftar Sekarang</RainbowButton>
