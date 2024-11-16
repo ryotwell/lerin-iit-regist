@@ -1,18 +1,22 @@
-import Footer from '@/components/footer';
-import { ModeToggle } from '@/components/mode-toggle';
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
-import * as React from 'react';
-import ReactDOM from 'react-dom/client';
-import { Faq } from './components/faq';
-import AnimatedGradientText from './components/ui/animated-gradient-text';
-import { Button } from './components/ui/button';
-import { HeroHighlight, Highlight } from './components/ui/hero-highlight';
-import { RainbowButton } from './components/ui/rainbow-button';
-import { CategoryAppleCardsCarousel } from './comps/category';
-import { cn } from './lib/utils';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { motion } from 'framer-motion'
+import { ChevronRight } from 'lucide-react'
+import * as React from 'react'
+import ReactDOM from 'react-dom/client'
+
+import { CategoryAppleCardsCarousel } from './comps/category'
+
+import { cn } from './lib/utils'
+
+import { FooterSection } from '@/components/footer'
+import { ModeToggle } from '@/components/mode-toggle'
+import { FaqSection } from './components/faq'
+
+import AnimatedGradientText from './components/ui/animated-gradient-text'
+import { Button } from './components/ui/button'
+import { HeroHighlight, Highlight } from './components/ui/hero-highlight'
+import { RainbowButton } from './components/ui/rainbow-button'
 
 const App: React.FC = () => {
 
@@ -26,9 +30,9 @@ const App: React.FC = () => {
 
     React.useEffect(() => {
         AOS.init({
-          duration: 500, // Durasi animasi dalam milidetik
-          once: true,     // Apakah animasi hanya terjadi sekali saat scroll
-        });
+          duration: 500,    // Durasi animasi dalam milidetik
+          once: true,       // Apakah animasi hanya terjadi sekali saat scroll
+        })
     }, [])
 
     return (
@@ -40,9 +44,9 @@ const App: React.FC = () => {
                     alt="Lerin NTB"
                     data-aos="fade-right"
                 />
-                <div className="flex items-center" data-aos="fade-left">
-                    <ModeToggle />
-                    <Button className="ml-2" asChild>
+                <div className="flex items-center">
+                    <ModeToggle data-aos="fade-down" />
+                    <Button className="ml-2" asChild data-aos="fade-left">
                         <a href="/panel/login">
                             Login
                         </a>
@@ -76,7 +80,7 @@ const App: React.FC = () => {
                             `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
                         )}
                         >
-                        At Universitas Hamzanwadi (UNHAZ)
+                        At Universitas Hamzanwadi
                         </span>
                         <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
                     </AnimatedGradientText>
@@ -95,21 +99,11 @@ const App: React.FC = () => {
 
             <CategoryAppleCardsCarousel />
 
-            <div className="content w-full h-full py-20 " id="categories">
-                <div data-aos="fade-up">
-                    <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-                        {`Pertanyaan Yang `}
-                    </h2>
-                    <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-                        {`Sering Di Tanyakan (FAQ)`}
-                    </h2>
-                </div>
-                <Faq />
-            </div>
+            <FaqSection />
 
-            <Footer />
+            <FooterSection />
         </>
-    );
-};
+    )
+}
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<App />)

@@ -1,4 +1,4 @@
-function Footer() {
+export function FooterSection() {
     return (
         <footer className="bg-white shadow dark:bg-slate-950">
             <div className="content p-4 md:py-8">
@@ -53,5 +53,3 @@ function Footer() {
         </footer>
     )
 }
-
-export default Footer
