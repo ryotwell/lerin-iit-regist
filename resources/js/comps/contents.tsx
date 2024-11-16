@@ -50,7 +50,7 @@ export const Timeline: React.FC = () => {
 
             <div className="mt-10 flex items-center text-sm">
                 <MapPin className="h-[1.2rem] w-[1.2rem] mr-2 text-slate-950/50 dark:text-slate-100/50" />
-                Kampus 1, Universitas Hamzanwadi
+                Aula Fakultas Teknik, Universitas Hamzanwadi
             </div>
         </>
     )
