@@ -60,16 +60,21 @@ export const SumoRobotSpesification: React.FC = () => {
     return (
         <>
             <ul className="list-disc space-y-3 text-slate-950/70 dark:text-slate-100/70">
-                <li className="ml-10">{`The robot used is an RC robot. The robot is not allowed to use autonomous or semi-autonomous systems.`}</li>
-                <li className="ml-10">{`The robot used in the competition has maximum dimensions of 20 cm x 20 cm with unlimited height (dimensions are measured at the robot's starting position). The total robot mass including batteries is maximum 1 kg (remote not included).`}</li>
-                <li className="ml-10">{`The voltage source must come from a Dry Accu battery (lead acid), NiCd, NiMH, Li-ion, or Li-Polymer battery.`}</li>
-                <li className="ml-10">{`The robot must be labelled with the name of each team on the front of the robot. The font type and size are free, but must be clearly visible to the referee.`}</li>
-                <li className="ml-10">{`The robot must not have devices that damage the competition arena and flip opponents by throwing.`}</li>
-                <li className="ml-10">{`The robot is not allowed to have devices that interfere with the performance of opponents' robots such as signal jammers, strobe lights, lasers, and the like.`}</li>
-                <li className="ml-10">{`The robot must not have systems to attach itself to the surface of the competition arena such as suction cups, diaphragms, sticky wheels, or similar devices.`}</li>
-                <li className="ml-10">{`The robot must not use weapons such as projectiles or saws and must not use easily flammable devices as weapons.`}</li>
-                <li className="ml-10">{`During the competition, the robot must not intentionally break into several parts (break into several robots or separate robot parts).`}</li>
-                <li className="ml-10">{`The robot is not allowed to have devices that can increase downforce, such as vacuum pumps and magnets.`}</li>
+                <li className="ml-10">{`Autonomus`}</li>
+                <li className="ml-10">{`Diameter 20 CM x 20 CM`}</li>
+                <li className="ml-10">{`Berat 1 KG`}</li>
+            </ul>
+        </>
+    )
+}
+
+export const AvoiderSpesification: React.FC = () => {
+    return (
+        <>
+            <ul className="list-disc space-y-3 text-slate-950/70 dark:text-slate-100/70">
+                <li className="ml-10">{`Sensor Maksimal 5`}</li>
+                <li className="ml-10">{`2 Roda Penggerak`}</li>
+                <li className="ml-10">{`Diameter 25 CM x 25 CM`}</li>
             </ul>
         </>
     )

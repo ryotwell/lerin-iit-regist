@@ -91,7 +91,6 @@ class UserResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->query(User::query()->where('role', 'user'))
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
@@ -101,11 +100,12 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('robot_category')
                     ->label('Kategori Robot')
                     ->getStateUsing(fn (User $user) => $user->robot_category === 'sumo' ? 'Sumo Game' : 'Avoider (Obstacle)'),
-                Tables\Columns\TextColumn::make('email')
+                Tables\Columns\TextColumn::make('responsible_person_name')
                     ->searchable()
-                    ->label('Email Tim'),
-                Tables\Columns\TextColumn::make('role')
-                    ->searchable(),
+                    ->label('Penanggung Jawab Tim'),
+                Tables\Columns\TextColumn::make('whatsapp_number')
+                    ->searchable()
+                    ->label('Whatsapp'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -116,7 +116,12 @@ class UserResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('robot_category')
+                    ->options([
+                        'sumo' => 'Sumo Game',
+                        'avoider' => 'Avoider (Obstacle)',
+                    ])
+                    ->label('Kategori Robot')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

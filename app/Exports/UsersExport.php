@@ -23,19 +23,22 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
     {
         return [
             'ID',
-            'Tim',
-            'Email Tim',
+            'Nama Tim',
             'Instansi',
             'Kategori Robot',
             'Status Pembayaran',
+            'Metode Pembayaran',
 
             'Penanggung Jawab',
+            'Whatsapp',
 
             'Nama Peserta 1',
             'Nama Peserta 2',
 
             'NIM/NIS Peserta 1',
             'NIM/NIS Peserta 2',
+
+            'Email',
         ];
     }
 
@@ -44,18 +47,21 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
         return [
             $user->id,
             $user->name,
-            $user->email,
             $user->agency,
-            ($user->robot_category == 'avoider') ? 'Avoider (Obstacle)' : 'Sumo Game',
-            ($user->payment->status == 'approved') ? 'Lunas' : 'Belum Lunas',
+            getCategoryName($user->robot_category),
+            getPaymentStatus($user->payment->status),
+            getPaymentMethod($user->payment->payment_method),
 
             $user->responsible_person_name,
+            $user->whatsapp_number,
 
             $user->participant_one_name,
             $user->participant_two_name,
 
             $user->participant_one_nim_or_nis,
             $user->participant_two_nim_or_nis,
+
+            $user->email,
         ];
     }
 
@@ -66,21 +72,23 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
             'B' => 20,
             'C' => 25,
             'D' => 25,
-            'E' => 20,
-            'F' => 20,
-            'G' => 20,
-            'H' => 20,
-            'I' => 20,
-            'J' => 20,
-            'K' => 20,
+            'E' => 25,
+            'F' => 25,
+            'G' => 25,
+            'H' => 25,
+            'I' => 25,
+            'J' => 25,
+            'K' => 25,
+            'L' => 25,
+            'M' => 25,
         ];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('A1:K1')->getFont()->setBold(true);
-        $sheet->getStyle('A1:K1')->getAlignment()->setHorizontal('center');
-        $sheet->getStyle('A:K')->getAlignment()->setHorizontal('center');
+        $sheet->getStyle('A1:M1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:M1')->getAlignment()->setHorizontal('center');
+        $sheet->getStyle('A:M')->getAlignment()->setHorizontal('center');
         return [];
     }
 
@@ -94,6 +102,6 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
             $query->where('robot_category', $this->robot_category);
         }
 
-        return $query->where('role', 'user')->with('payment')->get();
+        return $query->with('payment')->get();
     }
 }

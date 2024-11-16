@@ -28,7 +28,6 @@ class User extends Authenticatable
         'whatsapp_number',
 
         'responsible_person_name',
-        // 'responsible_person_nim_or_nis',
 
         'participant_one_name',
         'participant_one_nim_or_nis',

@@ -1,7 +1,7 @@
 import { Card, Carousel } from '@/components/ui/apple-cards-carousel'
 import { Button } from '@/components/ui/button'
 import React from 'react'
-import { SumoArena, Timeline } from './contents'
+import { AvoiderSpesification, SumoArena, SumoRobotSpesification, Timeline } from './contents'
 
 type SubCard = {
     title: string
@@ -35,18 +35,18 @@ const data: CardData[] = [
                     return <Timeline />
                 },
             },
-            // {
-            //     title: 'Robot Spesification',
-            //     body: () => {
-            //         return <SumoRobotSpesification />
-            //     },
-            // },
+            {
+                title: 'Robot Spesification',
+                body: () => {
+                    return <SumoRobotSpesification />
+                },
+            },
             {
                 title: 'Arena',
                 body: () => {
                     return <SumoArena />
                 },
-            },  
+            },
             // {
             //     title: 'Competition Rules',
             //     body: () => {
@@ -69,7 +69,7 @@ const data: CardData[] = [
     },
     {
         id: "avoider",
-        category: 'Tingkat SMP/SMA Sederajat',
+        category: 'Tingkat SMP/SMA/Sederajat',
         title: 'Avoider (obstacle)',
         src: '/categories/2.png',
         participant: '1 tim terdiri dari 2 orang',
@@ -80,6 +80,12 @@ const data: CardData[] = [
                 title: 'Timeline',
                 body: () => {
                     return <Timeline />
+                },
+            },
+            {
+                title: 'Robot Spesification',
+                body: () => {
+                    return <AvoiderSpesification />
                 },
             },
         ],

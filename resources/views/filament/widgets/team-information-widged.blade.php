@@ -50,17 +50,6 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        No. Whatsapp
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        :
-                    </th>
-                    <td class="px-6 py-4">
-                        {{ auth()->user()->whatsapp_number ?? '-' }}
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="col" class="px-6 py-3">
                         Penanggung Jawab Tim
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -72,29 +61,65 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Anggota 1
+                        No. Whatsapp
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
                     </th>
                     <td class="px-6 py-4">
-                        {{ auth()->user()->participant_one_name }} - {{ auth()->user()->participant_one_nim_or_nis ?? '-' }}
+                        {{ auth()->user()->whatsapp_number ?? '-' }}
                     </td>
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Anggota 2
+                        Nama Anggota 1
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
                     </th>
                     <td class="px-6 py-4">
-                        {{ auth()->user()->participant_two_name }} - {{ auth()->user()->participant_two_nim_or_nis ?? '-' }}
+                        {{ auth()->user()->participant_one_name }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Nama Anggota 2
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        :
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ auth()->user()->participant_two_name }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        NIM/NIS Anggota 1
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        :
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ auth()->user()->participant_one_nim_or_nis ?? '-' }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        NIM/NIS Anggota 2
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        :
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ auth()->user()->participant_two_nim_or_nis ?? '-' }}
                     </td>
                 </tr>
             </table>
         </div>
-        <x-filament::link href="{{ config('lerin.admin.whatsapp') }}" class="underline" target="_blank">
+        <div class="p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+            Silahkan hubungi admin jika ada perubahan pada informasi tim.
+        </div>
+        <x-filament::link href="{{ config('lerin.admin.whatsapp') }}" class="underline mt-6" target="_blank">
             Edit Informasi Tim
         </x-filament::link>
     </x-filament::section>

@@ -54,9 +54,11 @@ class CustomRegister extends BaseRegister
                     ->schema([
                         TextInput::make('responsible_person_name')
                             ->label('Nama')
-                            ->required(),
+                            ->required()
+                            ->helperText('Penanggung jawab tim bisa diisi oleh Mahasiswa/Guru/Dosen'),
                         TextInput::make('whatsapp_number')
                             ->label('Nomor Whatsapp')
+                            ->required()
                             ->numeric(),
                 ]),
                 Fieldset::make('Anggota Tim 1')
