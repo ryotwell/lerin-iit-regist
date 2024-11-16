@@ -7,7 +7,7 @@
                     Proses administrasi telah selesai dan di terima, masuk ke grub whatsapp di bawah untuk menunggu arahan dan informasi selengkapnya dari pihak panitia.
                 </div>
                 <div>
-                    <a href="" class="text-sm underline text-blue-500 flex items-center">
+                    <a href="{{ config('lerin.whatsapp.group') }}" class="text-sm underline text-blue-500 flex items-center" target="_blank" rel="noreferrer">
                         Masuk ke grub whatsapp
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
                     </a>
