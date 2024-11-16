@@ -30,12 +30,12 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
             'Status Pembayaran',
 
             'Penanggung Jawab',
+
             'Nama Peserta 1',
             'Nama Peserta 2',
 
             'NIM/NIS Peserta 1',
             'NIM/NIS Peserta 2',
-            'NIM/NIS Penanggung Jawab',
         ];
     }
 
@@ -50,9 +50,10 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
             ($user->payment->status == 'approved') ? 'Lunas' : 'Belum Lunas',
 
             $user->responsible_person_name,
+
             $user->participant_one_name,
             $user->participant_two_name,
-            $user->responsible_person_nim_or_nis,
+
             $user->participant_one_nim_or_nis,
             $user->participant_two_nim_or_nis,
         ];
@@ -72,14 +73,13 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
             'I' => 20,
             'J' => 20,
             'K' => 20,
-            'L' => 20, 
         ];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('A1:L1')->getFont()->setBold(true);
-        $sheet->getStyle('A1:L1')->getAlignment()->setHorizontal('center');
+        $sheet->getStyle('A1:K1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:K1')->getAlignment()->setHorizontal('center');
         $sheet->getStyle('A:K')->getAlignment()->setHorizontal('center');
         return [];
     }

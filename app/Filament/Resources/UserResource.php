@@ -63,13 +63,9 @@ class UserResource extends Resource
                         Forms\Components\TextInput::make('responsible_person_name')
                             ->required()
                             ->label('Nama'),
-                        Forms\Components\TextInput::make('responsible_person_nim_or_nis')
-                            ->required()
-                            ->label('NIM / NIS'),
-                            Forms\Components\TextInput::make('whatsapp_number')
+                        Forms\Components\TextInput::make('whatsapp_number')
                             ->label('Nomor Whatsapp')
-                            ->numeric()
-                            ->columnSpanFull(),
+                            ->numeric(),
                 ]),
                 Forms\Components\Fieldset::make('Anggota Tim 1')
                     ->schema([

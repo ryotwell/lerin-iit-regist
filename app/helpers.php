@@ -5,8 +5,8 @@ if (! function_exists('getFeeRegistration'))
     function getFeeRegistration(string $name): string
     {
         return match($name) {
-            'avoider' => 'Rp. 25.000',
-            'sumo' => 'Rp. 50.000',
+            'avoider' => 'Rp. 50.000',
+            'sumo' => 'Rp. 75.000',
             default => 'Rp. 0'
         };
     }

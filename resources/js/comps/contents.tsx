@@ -78,11 +78,11 @@ export const SumoRobotSpesification: React.FC = () => {
 export const SumoArena: React.FC = () => {
     return (
         <>
-            <ul className="list-disc space-y-3 text-slate-950/70 dark:text-slate-100/70">
+            {/* <ul className="list-disc space-y-3 text-slate-950/70 dark:text-slate-100/70">
                 <li className="ml-10"><strong>Material:</strong> The sumo robot competition arena is made of Medium Density Fibreboard (MDF) and covered with a black rubber sheet with a thickness of 5 mm.</li>
                 <li className="ml-10"><strong>Dimensions:</strong> The competition arena is circular with a diameter of 77 cm and a height of 2.5 cm.</li>
                 <li className="ml-10"><strong>Markings:</strong> The competition arena is marked with white lines as the boundary lines on the edge of the arena, with a width of 2.5 cm. The starting line for each robot is in the center of the arena, dark red in color, with dimensions of 10 cm x 1 cm and a distance of 10 cm between them.</li>
-            </ul>
+            </ul> */}
             <div className="flex justify-center mt-10">
                 <img src="/arena.jpg" alt="Arena" width={600} height={600} loading='lazy' className="rounded-xl" />
             </div>

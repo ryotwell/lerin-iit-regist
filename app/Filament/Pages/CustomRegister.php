@@ -55,14 +55,9 @@ class CustomRegister extends BaseRegister
                         TextInput::make('responsible_person_name')
                             ->label('Nama')
                             ->required(),
-                        TextInput::make('responsible_person_nim_or_nis')
-                            ->label('NIM / NIS')
-                            ->required()
-                            ->numeric(),
                         TextInput::make('whatsapp_number')
                             ->label('Nomor Whatsapp')
-                            ->numeric()
-                            ->columnSpanFull(),
+                            ->numeric(),
                 ]),
                 Fieldset::make('Anggota Tim 1')
                     ->schema([

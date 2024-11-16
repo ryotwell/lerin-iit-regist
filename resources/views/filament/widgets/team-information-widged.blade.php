@@ -67,7 +67,7 @@
                         :
                     </th>
                     <td class="px-6 py-4">
-                        {{ auth()->user()->responsible_person_name }} - {{ auth()->user()->responsible_person_nim_or_nis ?? '-' }}
+                        {{ auth()->user()->responsible_person_name }}
                     </td>
                 </tr>
                 <tr>
