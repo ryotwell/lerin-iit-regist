@@ -21,23 +21,6 @@ type CardData = {
 
 const data: CardData[] = [
     {
-        id: "avoider",
-        category: 'Tingkat SMP/SMA Sederajat',
-        title: 'Avoider (obstacle)',
-        src: '/categories/2.png',
-        participant: '1 tim terdiri dari 3 orang',
-        challengeType: 'Buatlah robot yang menghindari tabrakan dengan rintangan saat bergerak dari posisi awal ke tujuan di dalam arena.',
-        feeRegistration: 'Rp. 50.000',
-        subCards: [
-            {
-                title: 'Timeline',
-                body: () => {
-                    return <Timeline />
-                },
-            },
-        ],
-    },
-    {
         id: "sumo",
         category: 'Tingkat Mahasiswa/Umum',
         title: 'Sumo Game',
@@ -82,6 +65,23 @@ const data: CardData[] = [
             //         return <SumoViolationsAndPenalties />
             //     },
             // },
+        ],
+    },
+    {
+        id: "avoider",
+        category: 'Tingkat SMP/SMA Sederajat',
+        title: 'Avoider (obstacle)',
+        src: '/categories/2.png',
+        participant: '1 tim terdiri dari 3 orang',
+        challengeType: 'Buatlah robot yang menghindari tabrakan dengan rintangan saat bergerak dari posisi awal ke tujuan di dalam arena.',
+        feeRegistration: 'Rp. 50.000',
+        subCards: [
+            {
+                title: 'Timeline',
+                body: () => {
+                    return <Timeline />
+                },
+            },
         ],
     },
 ]

@@ -3,13 +3,16 @@ import { ModeToggle } from '@/components/mode-toggle';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { motion } from 'framer-motion';
+import { ChevronRight } from 'lucide-react';
 import * as React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Faq } from './components/faq';
+import AnimatedGradientText from './components/ui/animated-gradient-text';
 import { Button } from './components/ui/button';
 import { HeroHighlight, Highlight } from './components/ui/hero-highlight';
 import { RainbowButton } from './components/ui/rainbow-button';
 import { CategoryAppleCardsCarousel } from './comps/category';
+import { cn } from './lib/utils';
 
 const App: React.FC = () => {
 
@@ -66,6 +69,17 @@ const App: React.FC = () => {
                     }}
                     className="text-3xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
                 >
+                    <AnimatedGradientText className="mb-6">
+                        🚀 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
+                        <span
+                        className={cn(
+                            `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+                        )}
+                        >
+                        At Universitas Hamzanwadi (UNHAZ)
+                        </span>
+                        <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+                    </AnimatedGradientText>
                     Lerin is taking on the
                     <br />
                     <Highlight className="text-black dark:text-white">
