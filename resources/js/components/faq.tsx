@@ -18,7 +18,7 @@ const faqQuestions: FaqQuestionType[] = [
     },
     {
         title: 'Penanggung jawab tim diisi oleh siapa?',
-        answer: 'Penanggung jawab tim bisa diisi oleh Mahasiswa/Guru/Dosen',
+        answer: 'Penanggung jawab tim bisa diisi oleh seorang Mahasiswa/Guru/Dosen',
     },
 ]
 
