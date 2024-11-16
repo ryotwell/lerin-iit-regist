@@ -50,7 +50,7 @@ class CustomRegister extends BaseRegister
                 View::make('components.divider'),
                 View::make('components.sign-up-team'),
 
-                Fieldset::make('Penanggung Jawab')
+                Fieldset::make('Penanggung Jawab Tim')
                     ->schema([
                         TextInput::make('responsible_person_name')
                             ->label('Nama')
