@@ -25,7 +25,7 @@ const data: CardData[] = [
         category: 'Tingkat Mahasiswa/Umum',
         title: 'Sumo Game',
         src: '/categories/3.png',
-        participant: '1 tim terdiri dari 2 orang',
+        participant: '1 tim terdiri dari 3 peserta (+ ketua tim)',
         challengeType: 'Setiap robot harus mendorong lawan keluar dari arena untuk memenangkan permainan.',
         feeRegistration: 'Rp. 75.000',
         subCards: [
@@ -72,7 +72,7 @@ const data: CardData[] = [
         category: 'Tingkat SMP/SMA/Sederajat',
         title: 'Avoider (obstacle)',
         src: '/categories/2.png',
-        participant: '1 tim terdiri dari 2 orang',
+        participant: '1 tim terdiri dari 2 peserta',
         challengeType: 'Buatlah robot yang menghindari tabrakan dengan rintangan saat bergerak dari posisi awal ke tujuan di dalam arena.',
         feeRegistration: 'Rp. 50.000',
         subCards: [
