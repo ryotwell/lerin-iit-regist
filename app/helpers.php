@@ -49,7 +49,7 @@ if (! function_exists('getCategoryName'))
 }
 if (! function_exists('getParticipantLabel'))
 {
-    function getParticipantLabel(string $robot_category): string
+    function getParticipantLabel(string | null $robot_category): string
     {
         return match($robot_category) {
             'sumo' => 'Ketua Tim',
