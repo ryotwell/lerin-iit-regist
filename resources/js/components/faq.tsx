@@ -14,10 +14,10 @@ type FaqQuestionType = {
 const faqQuestions: FaqQuestionType[] = [
     {
         title: 'Berapa jumlah peserta dalam satu tim?',
-        answer: 'Jumlah anggota tim 3 peserta (+ketua tim) untuk Robot Sumo, dan 2 peserta untuk Avoider (Obstacle)',
+        answer: 'Robot Sumo 3 peserta (+ ketua tim), dan 2 peserta untuk Avoider Obstacle',
     },
     {
-        title: 'Penanggung jawab tim diisi oleh siapa di Avoider (Obstacle)?',
+        title: 'Penanggung jawab tim diisi oleh siapa di Avoider Obstacle?',
         answer: 'Penanggung jawab tim diisi oleh Guru yang bertanggung jawab atas tim tersebut.',
     },
 ]
