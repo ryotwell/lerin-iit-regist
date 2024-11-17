@@ -50,93 +50,83 @@ class CustomRegister extends BaseRegister
 
     public function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                View::make('components.sign-up-creds'),
+        return $form->schema([
+            View::make('components.sign-up-creds'),
 
-                $this->getEmailFormComponent()
-                    ->label('Alamat Email'),
-                $this->getPasswordFormComponent()
-                    ->label('Buat Password'),
-                $this->getPasswordConfirmationFormComponent()
-                    ->label('Ketik Ulang Password'),
+            $this->getEmailFormComponent()
+                ->label('Alamat Email'),
+            $this->getPasswordFormComponent()
+                ->label('Buat Password'),
+            $this->getPasswordConfirmationFormComponent()
+                ->label('Ketik Ulang Password'),
 
-                View::make('components.divider'),
+            View::make('components.divider'),
 
-                $this->getNameFormComponent()
-                    ->label('Nama Tim')
-                    ->helperText('Gunakan nama tim yang berbeda dari yang lain untuk memudahkan kami dalam membedakan tim-tim'),
-                TextInput::make('agency')
-                    ->label('Asal Instansi')
-                    ->helperText('Contoh: Universitas Hamzanwadi/SMKN 1 Selong')
-                    ->required(),
-                Select::make('robot_category')
-                    ->required()
-                    ->label('Kategori Robot')
-                    ->options([
-                            'sumo' => 'Sumo Game',
-                            'avoider' => 'Avoider (obstacle)',
-                    ])
-                    ->placeholder('Pilih salah satu kategori robot')
-                    ->default($this->robot_category)
-                    ->reactive()
-                    ->afterStateUpdated(fn ($state) => $this->robot_category = $state),
+            $this->getNameFormComponent()
+                ->label('Nama Tim')
+                ->helperText('Gunakan nama tim yang berbeda dari yang lain untuk memudahkan kami dalam membedakan tim-tim'),
+            TextInput::make('agency')
+                ->label('Asal Instansi')
+                ->helperText('Contoh: Universitas Hamzanwadi/SMKN 1 Selong')
+                ->required(),
+            Select::make('robot_category')
+                ->required()
+                ->label('Kategori Robot')
+                ->options([
+                        'sumo' => 'Sumo Game',
+                        'avoider' => 'Avoider (obstacle)',
+                ])
+                ->placeholder('Pilih salah satu kategori robot')
+                ->default($this->robot_category)
+                ->reactive()
+                ->afterStateUpdated(fn ($state) => $this->robot_category = $state),
 
-                View::make('components.divider')
-                    ->hidden(fn () => empty($this->robot_category)),
-                View::make('components.sign-up-team')
-                    ->hidden(fn () => empty($this->robot_category)),
+            View::make('components.divider')
+                ->hidden(fn () => empty($this->robot_category)),
+            View::make('components.sign-up-team')
+                ->hidden(fn () => empty($this->robot_category)),
 
-                Fieldset::make($this->getParticipantGrubLabel())
-                    ->hidden(fn () => empty($this->robot_category))
-                    ->schema([
-                        TextInput::make('responsible_person_name')
-                            ->label('Nama')
-                            ->required()
-                            ->columnSpanFull(),
-                        TextInput::make('whatsapp_number')
-                            ->label('Nomor Whatsapp')
-                            ->required()
-                            ->numeric()
-                            ->columnSpanFull(),
-                ]),
-                Fieldset::make('Anggota Tim 1')
-                    ->hidden(fn () => empty($this->robot_category))
-                    ->schema([
-                        TextInput::make('participant_one_name')
-                            ->required()
-                            ->label('Nama')
-                            ->columnSpanFull(),
-                        TextInput::make('participant_one_nim_or_nis')
-                            ->label($this->getParticipantIdentifierLabel())
-                            ->required()
-                            ->numeric()
-                            ->columnSpanFull(),
-                ]),
-                Fieldset::make('Anggota Tim 2')
-                    ->hidden(fn () => empty($this->robot_category))
-                    ->schema([
-                        TextInput::make('participant_two_name')
-                            ->required()
-                            ->label('Nama')
-                            ->columnSpanFull(),
-                        TextInput::make('participant_two_nim_or_nis')
-                            ->label($this->getParticipantIdentifierLabel())
-                            ->required()
-                            ->numeric()
-                            ->columnSpanFull(),
-                ]),
-                View::make('components.admin-contact'),
-            ]);
-        }
-
-    public function getParticipantGrubLabel(): string
-    {
-        return match ($this->robot_category) {
-            'sumo' => 'Ketua Tim',
-            'avoider' => 'Penanggung Jawab Tim',
-            default => '-',
-        };
+            Fieldset::make(getParticipantLabel($this->robot_category))
+                ->hidden(fn () => empty($this->robot_category))
+                ->schema([
+                    TextInput::make('responsible_person_name')
+                        ->label('Nama')
+                        ->required()
+                        ->columnSpanFull(),
+                    TextInput::make('whatsapp_number')
+                        ->label('Nomor Whatsapp')
+                        ->required()
+                        ->numeric()
+                        ->columnSpanFull(),
+            ]),
+            Fieldset::make('Anggota Tim 1')
+                ->hidden(fn () => empty($this->robot_category))
+                ->schema([
+                    TextInput::make('participant_one_name')
+                        ->required()
+                        ->label('Nama')
+                        ->columnSpanFull(),
+                    TextInput::make('participant_one_nim_or_nis')
+                        ->label($this->getParticipantIdentifierLabel())
+                        ->required()
+                        ->numeric()
+                        ->columnSpanFull(),
+            ]),
+            Fieldset::make('Anggota Tim 2')
+                ->hidden(fn () => empty($this->robot_category))
+                ->schema([
+                    TextInput::make('participant_two_name')
+                        ->required()
+                        ->label('Nama')
+                        ->columnSpanFull(),
+                    TextInput::make('participant_two_nim_or_nis')
+                        ->label($this->getParticipantIdentifierLabel())
+                        ->required()
+                        ->numeric()
+                        ->columnSpanFull(),
+            ]),
+            View::make('components.admin-contact'),
+        ]);
     }
 
     public function getParticipantIdentifierLabel(): string

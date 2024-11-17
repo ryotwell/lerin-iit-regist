@@ -47,3 +47,14 @@ if (! function_exists('getCategoryName'))
         };
     }
 }
+if (! function_exists('getParticipantLabel'))
+{
+    function getParticipantLabel(string $robot_category): string
+    {
+        return match($robot_category) {
+            'sumo' => 'Ketua Tim',
+            'avoider' => 'Penanggung Jawab Tim',
+            default => 'unknown'
+        };
+    }
+}

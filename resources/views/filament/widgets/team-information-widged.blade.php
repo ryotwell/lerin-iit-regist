@@ -17,7 +17,7 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Asal Instansi
+                        Instansi
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
@@ -50,7 +50,7 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Penanggung Jawab Tim
+                        {{ getParticipantLabel(auth()->user()->robot_category) }}
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
@@ -72,7 +72,7 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Nama Anggota 1
+                        Nama Peserta 1
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
@@ -83,7 +83,7 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Nama Anggota 2
+                        Nama Peserta 2
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
@@ -94,7 +94,7 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        NIM/NIS Anggota 1
+                        {{ auth()->user()->robot_category == 'sumo' ? 'NIM' : 'NIS' }} Peserta 1
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
@@ -105,7 +105,7 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        NIM/NIS Anggota 2
+                        {{ auth()->user()->robot_category == 'sumo' ? 'NIM' : 'NIS' }} Peserta 2
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
