@@ -1,7 +1,7 @@
 import { Card, Carousel } from '@/components/ui/apple-cards-carousel'
 import { Button } from '@/components/ui/button'
 import React from 'react'
-import { AvoiderSpesification, SumoArena, SumoRobotSpesification, Timeline } from './contents'
+import { AvoiderSpesification, SumoRobotSpesification, Timeline } from './contents'
 
 type SubCard = {
     title: string
@@ -41,12 +41,12 @@ const data: CardData[] = [
                     return <SumoRobotSpesification />
                 },
             },
-            {
-                title: 'Arena',
-                body: () => {
-                    return <SumoArena />
-                },
-            },
+            // {
+            //     title: 'Arena',
+            //     body: () => {
+            //         return <SumoArena />
+            //     },
+            // },
             // {
             //     title: 'Competition Rules',
             //     body: () => {
