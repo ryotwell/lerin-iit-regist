@@ -22,6 +22,12 @@ class CustomRegister extends BaseRegister
 
     public $robot_category;
 
+    public function __construct()
+    {
+
+        $this->robot_category = request()->input('robot_category');
+    }
+
     public function form(Form $form): Form
     {
         return $form
@@ -35,7 +41,7 @@ class CustomRegister extends BaseRegister
                 $this->getPasswordConfirmationFormComponent()
                     ->label('Ketik Ulang Password'),
 
-                    View::make('components.divider'),
+                View::make('components.divider'),
     
 
                 $this->getNameFormComponent()
