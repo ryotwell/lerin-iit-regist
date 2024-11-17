@@ -13,15 +13,14 @@ use Filament\Forms\Form;
 use Filament\Pages\Auth\Register as BaseRegister;
 use Filament\Http\Responses\Auth\Contracts\RegistrationResponse;
 use Filament\Events\Auth\Registered;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Illuminate\Support\Facades\Log;
 
 class CustomRegister extends BaseRegister
 {
-    public $robot_category;
+    use InteractsWithForms;
 
-    public function __construct()
-    {
-        $this->robot_category = request()->query('robot_category');
-    }
+    public $robot_category;
 
     public function form(Form $form): Form
     {
@@ -55,7 +54,7 @@ class CustomRegister extends BaseRegister
                     ])
                     ->placeholder('Pilih salah satu kategori robot')
                     ->default($this->robot_category)
-                    ->reactive() // Membuat reaktif
+                    ->reactive()
                     ->afterStateUpdated(fn ($state) => $this->robot_category = $state),
 
                 View::make('components.divider')
@@ -63,7 +62,7 @@ class CustomRegister extends BaseRegister
                 View::make('components.sign-up-team')
                     ->hidden(fn () => empty($this->robot_category)),
 
-                Fieldset::make($this->robot_category === 'sumo' ? 'Ketua Tim' : 'Penanggung Jawab Tim')
+                Fieldset::make($this->getParticipantGrubLabel())
                     ->hidden(fn () => empty($this->robot_category))
                     ->schema([
                         TextInput::make('responsible_person_name')
@@ -84,7 +83,7 @@ class CustomRegister extends BaseRegister
                             ->label('Nama')
                             ->columnSpanFull(),
                         TextInput::make('participant_one_nim_or_nis')
-                            ->label($this->robot_category === 'sumo' ? 'NIM (Nomor Induk Mahasiswa)' : 'NIS (Nomor Induk Siswa)')
+                            ->label($this->getParticipantIdentifierLabel())
                             ->required()
                             ->numeric()
                             ->columnSpanFull(),
@@ -97,16 +96,32 @@ class CustomRegister extends BaseRegister
                             ->label('Nama')
                             ->columnSpanFull(),
                         TextInput::make('participant_two_nim_or_nis')
-                            ->label($this->robot_category === 'sumo' ? 'NIM (Nomor Induk Mahasiswa)' : 'NIS (Nomor Induk Siswa)')
+                            ->label($this->getParticipantIdentifierLabel())
                             ->required()
                             ->numeric()
                             ->columnSpanFull(),
                 ]),
-
                 View::make('components.admin-contact'),
             ]);
+        }
+
+    public function getParticipantGrubLabel(): string
+    {
+        return match ($this->robot_category) {
+            'sumo' => 'Ketua Tim',
+            'avoider' => 'Penanggung Jawab Tim',
+            default => '-',
+        };
     }
 
+    public function getParticipantIdentifierLabel(): string
+    {
+        return match ($this->robot_category) {
+            'sumo' => 'NIM (Nomor Induk Mahasiswa)',
+            'avoider' => 'NIS (Nomor Induk Siswa)',
+            default => '-',
+        };
+    }
     public function register(): ?RegistrationResponse
     {
         try {
