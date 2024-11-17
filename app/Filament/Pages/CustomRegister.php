@@ -16,10 +16,29 @@ use Filament\Events\Auth\Registered;
 
 class CustomRegister extends BaseRegister
 {
+    public $robot_category;
+
+    public function __construct()
+    {
+        $this->robot_category = request()->query('robot_category');
+    }
+
     public function form(Form $form): Form
     {
         return $form
             ->schema([
+                View::make('components.sign-up-creds'),
+
+                $this->getEmailFormComponent()
+                    ->label('Alamat Email'),
+                $this->getPasswordFormComponent()
+                    ->label('Buat Password'),
+                $this->getPasswordConfirmationFormComponent()
+                    ->label('Ketik Ulang Password'),
+
+                    View::make('components.divider'),
+    
+
                 $this->getNameFormComponent()
                     ->label('Nama Tim')
                     ->helperText('Gunakan nama tim yang berbeda dari yang lain untuk memudahkan kami dalam membedakan tim-tim'),
@@ -35,22 +54,17 @@ class CustomRegister extends BaseRegister
                             'avoider' => 'Avoider (obstacle)',
                     ])
                     ->placeholder('Pilih salah satu kategori robot')
-                    ->default(request()->query('robot_category')),
+                    ->default($this->robot_category)
+                    ->reactive() // Membuat reaktif
+                    ->afterStateUpdated(fn ($state) => $this->robot_category = $state),
 
-                View::make('components.divider'),
-                View::make('components.sign-up-creds'),
+                View::make('components.divider')
+                    ->hidden(fn () => empty($this->robot_category)),
+                View::make('components.sign-up-team')
+                    ->hidden(fn () => empty($this->robot_category)),
 
-                $this->getEmailFormComponent()
-                    ->label('Alamat Email'),
-                $this->getPasswordFormComponent()
-                    ->label('Buat Password'),
-                $this->getPasswordConfirmationFormComponent()
-                    ->label('Ketik Ulang Password'),
-
-                View::make('components.divider'),
-                View::make('components.sign-up-team'),
-
-                Fieldset::make('Penanggung Jawab Tim')
+                Fieldset::make($this->robot_category === 'sumo' ? 'Ketua Tim' : 'Penanggung Jawab Tim')
+                    ->hidden(fn () => empty($this->robot_category))
                     ->schema([
                         TextInput::make('responsible_person_name')
                             ->label('Nama')
@@ -63,24 +77,30 @@ class CustomRegister extends BaseRegister
                             ->columnSpanFull(),
                 ]),
                 Fieldset::make('Anggota Tim 1')
+                    ->hidden(fn () => empty($this->robot_category))
                     ->schema([
                         TextInput::make('participant_one_name')
                             ->required()
-                            ->label('Nama'),
+                            ->label('Nama')
+                            ->columnSpanFull(),
                         TextInput::make('participant_one_nim_or_nis')
-                            ->label('NIM / NIS')
+                            ->label($this->robot_category === 'sumo' ? 'NIM (Nomor Induk Mahasiswa)' : 'NIS (Nomor Induk Siswa)')
                             ->required()
-                            ->numeric(),
+                            ->numeric()
+                            ->columnSpanFull(),
                 ]),
                 Fieldset::make('Anggota Tim 2')
+                    ->hidden(fn () => empty($this->robot_category))
                     ->schema([
                         TextInput::make('participant_two_name')
                             ->required()
-                            ->label('Nama'),
+                            ->label('Nama')
+                            ->columnSpanFull(),
                         TextInput::make('participant_two_nim_or_nis')
-                            ->label('NIM / NIS')
+                            ->label($this->robot_category === 'sumo' ? 'NIM (Nomor Induk Mahasiswa)' : 'NIS (Nomor Induk Siswa)')
                             ->required()
-                            ->numeric(),
+                            ->numeric()
+                            ->columnSpanFull(),
                 ]),
 
                 View::make('components.admin-contact'),
