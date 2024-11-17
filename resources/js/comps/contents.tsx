@@ -61,7 +61,7 @@ export const SumoRobotSpesification: React.FC = () => {
         <>
             <ul className="list-disc space-y-3 text-slate-950/70 dark:text-slate-100/70">
                 <li className="ml-10">{`Autonomus`}</li>
-                <li className="ml-10">{`Diameter 20 CM x 20 CM`}</li>
+                <li className="ml-10">{`Diameter Maks 20 CM x 20 CM`}</li>
                 <li className="ml-10">{`Berat 1 KG`}</li>
             </ul>
         </>
@@ -73,8 +73,8 @@ export const AvoiderSpesification: React.FC = () => {
         <>
             <ul className="list-disc space-y-3 text-slate-950/70 dark:text-slate-100/70">
                 <li className="ml-10">{`Sensor Maksimal 5`}</li>
-                <li className="ml-10">{`2 Roda Penggerak`}</li>
-                <li className="ml-10">{`Diameter 25 CM x 25 CM`}</li>
+                <li className="ml-10">{`2 Motor Penggerak`}</li>
+                <li className="ml-10">{`Diameter Maks 25 CM x 25 CM`}</li>
             </ul>
         </>
     )
