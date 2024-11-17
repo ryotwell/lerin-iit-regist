@@ -14,7 +14,6 @@ use Filament\Pages\Auth\Register as BaseRegister;
 use Filament\Http\Responses\Auth\Contracts\RegistrationResponse;
 use Filament\Events\Auth\Registered;
 use Filament\Forms\Concerns\InteractsWithForms;
-use Illuminate\Support\Facades\Log;
 
 class CustomRegister extends BaseRegister
 {
