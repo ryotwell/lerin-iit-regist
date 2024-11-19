@@ -19,6 +19,7 @@ if (! function_exists('getPaymentStatus'))
         return match($payment) {
             'pending' => 'Menunggu Pembayaran',
             'approved' => 'Pembayaran Diterima',
+            'review_status' => 'Menunggu Verifikasi',
             default => 'Pembayaran Ditolak'
         };
     }

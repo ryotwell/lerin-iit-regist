@@ -50,17 +50,6 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        {{ getParticipantLabel(auth()->user()->robot_category) }}
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        :
-                    </th>
-                    <td class="px-6 py-4">
-                        {{ auth()->user()->responsible_person_name }}
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="col" class="px-6 py-3">
                         No. Whatsapp
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -72,7 +61,18 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Nama Peserta 1
+                        {{ getParticipantLabel(auth()->user()->robot_category) }}
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        :
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ auth()->user()->responsible_person_name }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Nama Anggota 1
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
@@ -83,7 +83,7 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Nama Peserta 2
+                        Nama Anggota 2
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
@@ -94,7 +94,18 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        {{ auth()->user()->robot_category == 'sumo' ? 'NIM' : 'NIS' }} Peserta 1
+                        NIM {{ getParticipantLabel(auth()->user()->robot_category) }}
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        :
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ auth()->user()->responsible_person_nim_or_nis }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        {{ auth()->user()->robot_category == 'sumo' ? 'NIM' : 'NIS' }} Anggota 1
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
@@ -105,7 +116,7 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        {{ auth()->user()->robot_category == 'sumo' ? 'NIM' : 'NIS' }} Peserta 2
+                        {{ auth()->user()->robot_category == 'sumo' ? 'NIM' : 'NIS' }} Anggota 2
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('whatsapp_number')->nullable();
 
             $table->string('responsible_person_name')->nullable();
-            // $table->string('responsible_person_nim_or_nis')->nullable();
+            $table->string('responsible_person_nim_or_nis')->nullable();
 
             $table->string('participant_one_name')->nullable();
             $table->string('participant_one_nim_or_nis')->nullable();

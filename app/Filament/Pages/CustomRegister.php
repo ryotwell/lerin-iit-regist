@@ -35,6 +35,8 @@ class CustomRegister extends BaseRegister
 
     public string | null $responsible_person_name;
 
+    public string | null $responsible_person_nim_or_nis;
+
     public string | null $participant_one_name;
 
     public string | null $participant_one_nim_or_nis;
@@ -50,6 +52,10 @@ class CustomRegister extends BaseRegister
 
     public function form(Form $form): Form
     {
+        if ( $this->robot_category === 'avoider' ) {
+            $this->responsible_person_nim_or_nis = null;
+        }
+
         return $form->schema([
             View::make('components.sign-up-creds'),
 
@@ -93,6 +99,12 @@ class CustomRegister extends BaseRegister
                         ->label('Nama')
                         ->required()
                         ->columnSpanFull(),
+                    TextInput::make('responsible_person_nim_or_nis')
+                        ->hidden(fn () => $this->robot_category !== 'sumo')
+                        ->label($this->getParticipantIdentifierLabel())
+                        ->required()
+                        ->numeric()
+                        ->columnSpanFull(),
                     TextInput::make('whatsapp_number')
                         ->label('Nomor Whatsapp')
                         ->required()
@@ -103,12 +115,10 @@ class CustomRegister extends BaseRegister
                 ->hidden(fn () => empty($this->robot_category))
                 ->schema([
                     TextInput::make('participant_one_name')
-                        ->required()
                         ->label('Nama')
                         ->columnSpanFull(),
                     TextInput::make('participant_one_nim_or_nis')
                         ->label($this->getParticipantIdentifierLabel())
-                        ->required()
                         ->numeric()
                         ->columnSpanFull(),
             ]),
@@ -116,12 +126,10 @@ class CustomRegister extends BaseRegister
                 ->hidden(fn () => empty($this->robot_category))
                 ->schema([
                     TextInput::make('participant_two_name')
-                        ->required()
                         ->label('Nama')
                         ->columnSpanFull(),
                     TextInput::make('participant_two_nim_or_nis')
                         ->label($this->getParticipantIdentifierLabel())
-                        ->required()
                         ->numeric()
                         ->columnSpanFull(),
             ]),

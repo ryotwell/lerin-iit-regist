@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('receipt_image')->nullable();
             $table->enum('payment_method', ['bank_transfer', 'cash'])->nullable();
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('status', ['pending', 'approved', 'rejected', 'review_status'])->default('pending');
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use Filament\Forms;
 use Filament\Actions;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Notifications\Notification;
 
 class UploadPaymentReceipt extends EditRecord
 {
@@ -26,6 +27,19 @@ class UploadPaymentReceipt extends EditRecord
     public static function canAccess(array $parameters = []): bool
     {
         return $parameters['record']->id === auth()->user()->id;
+    }
+
+    protected function afterSave(): void
+    {
+        if ($this->record->receipt_image) {
+            $this->record->update(['status' => 'review_status']);
+
+            Notification::make()
+                ->success()
+                ->title('Bukti pembayaran berhasil di simpan, silakan tunggu verifikasi dari admin')
+                ->duration(10000)
+                ->send();
+        }
     }
 
     public function form(Form $form): Form
