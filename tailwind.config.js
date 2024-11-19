@@ -87,7 +87,8 @@ export default {
     			'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear',
     			'accordion-down': 'accordion-down 0.2s ease-out',
     			'accordion-up': 'accordion-up 0.2s ease-out',
-    			gradient: 'gradient 8s linear infinite'
+    			gradient: 'gradient 8s linear infinite',
+    			'background-position-spin': 'background-position-spin 3000ms infinite alternate'
     		},
     		keyframes: {
     			rainbow: {
@@ -136,6 +137,14 @@ export default {
     			gradient: {
     				to: {
     					backgroundPosition: 'var(--bg-size) 0'
+    				}
+    			},
+    			'background-position-spin': {
+    				'0%': {
+    					backgroundPosition: 'top center'
+    				},
+    				'100%': {
+    					backgroundPosition: 'bottom center'
     				}
     			}
     		}

@@ -16,6 +16,7 @@ import { FaqSection } from './components/faq'
 import AnimatedGradientText from './components/ui/animated-gradient-text'
 import { Button } from './components/ui/button'
 import { HeroHighlight, Highlight } from './components/ui/hero-highlight'
+import HyperText from './components/ui/hyper-text'
 import { RainbowButton } from './components/ui/rainbow-button'
 
 const App: React.FC = () => {
@@ -94,7 +95,12 @@ const App: React.FC = () => {
                     Show your team's skill and innovation!
                 </motion.h1>
                 <div className="flex justify-center mt-8">
-                    <RainbowButton href="#categories" data-aos="fade-up" data-aos-delay="500">Daftar Sekarang</RainbowButton>
+                    <RainbowButton href="#categories" data-aos="fade-up" data-aos-delay="500">
+                        <HyperText
+                            className="font-bold"
+                            text="Daftar Sekarang"
+                        />
+                    </RainbowButton>
                 </div>
             </HeroHighlight>
 

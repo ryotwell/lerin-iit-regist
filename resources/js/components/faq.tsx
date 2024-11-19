@@ -29,10 +29,10 @@ export function FaqSection() {
         <div className="content w-full h-full py-20 " id="categories" data-aos="fade-up">
             <div>
                 <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-                    {`Pertanyaan Yang `}
+                    {`Pertanyaan yang`}
                 </h2>
                 <h2 className="max-w-7xl text-2xl md:text-4xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-                    {`Sering Di Tanyakan (FAQ)`}
+                    {`sering di tanyakan (FAQ)`}
                 </h2>
             </div>
             <Accordion type="single" collapsible className="w-full mt-6">

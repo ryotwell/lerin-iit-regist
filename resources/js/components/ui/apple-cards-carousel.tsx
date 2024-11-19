@@ -275,10 +275,6 @@ export const Card = ({
                         </span>
                         <MoveRight className="ml-2 group-hover:translate-x-2 duration-150 text-white" />
                     </ShimmerButton>
-                    {/* <Button size="lg" className="group w-full lg:w-auto bg-purple-600 hover:bg-purple-700 text-slate-200 rounded-2xl">
-                        Pilih
-                        <MoveRight className="group-hover:translate-x-2 duration-150" />
-                    </Button> */}
                 </div>
             </motion.button>
         </>
