@@ -4,13 +4,13 @@ return [
 
     'title' => 'Register',
 
-    'heading' => 'Sign up',
+    'heading' => 'Daftar',
 
     'actions' => [
 
         'login' => [
-            'before' => 'or',
-            'label' => 'sign in to your account',
+            'before' => 'atau',
+            'label' => 'sudah punya akun? masuk disini',
         ],
 
     ],
@@ -18,11 +18,11 @@ return [
     'form' => [
 
         'email' => [
-            'label' => 'Email address',
+            'label' => 'Alamat Email',
         ],
 
         'name' => [
-            'label' => 'Name',
+            'label' => 'Nama Tim',
         ],
 
         'password' => [
@@ -37,7 +37,7 @@ return [
         'actions' => [
 
             'register' => [
-                'label' => 'Sign up',
+                'label' => 'Daftar',
             ],
 
         ],

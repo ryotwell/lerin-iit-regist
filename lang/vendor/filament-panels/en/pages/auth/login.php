@@ -4,13 +4,13 @@ return [
 
     'title' => 'Login',
 
-    'heading' => 'Sign in',
+    'heading' => 'Masuk',
 
     'actions' => [
 
         'register' => [
-            'before' => 'or',
-            'label' => 'sign up for an account',
+            'before' => 'atau',
+            'label' => 'belum punya akun? daftar disini',
         ],
 
         'request_password_reset' => [
@@ -22,7 +22,7 @@ return [
     'form' => [
 
         'email' => [
-            'label' => 'Email address',
+            'label' => 'Alamat Email',
         ],
 
         'password' => [
@@ -30,13 +30,13 @@ return [
         ],
 
         'remember' => [
-            'label' => 'Remember me',
+            'label' => 'Ingat saya',
         ],
 
         'actions' => [
 
             'authenticate' => [
-                'label' => 'Sign in',
+                'label' => 'Masuk',
             ],
 
         ],

@@ -161,10 +161,15 @@ const CreateContent: React.FC<CardData> = ({
                 </div>
                 <div>
                     <Button asChild>
-                        <a href={`/panel/register?robot_category=${id}`}>
+                        <a href={`/panel/register?robot_category=${id}`} className='mr-4'>
                             Daftar Sekarang
                         </a>
                     </Button>
+                    {/* <Button asChild>
+                        <a href={`/panel/register?robot_category=${id}`}>
+                            Download Panduan
+                        </a>
+                    </Button> */}
                 </div>
             </div>
             {subCards?.map(({ body, title }, index) => {
