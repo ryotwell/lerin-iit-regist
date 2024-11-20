@@ -52,10 +52,7 @@ class UploadPaymentReceipt extends EditRecord
                 ->required()
                 ->maxSize(4096),
             Forms\Components\Select::make('payment_method')
-                    ->options([
-                        'bank_transfer' => 'Bank Transfer',
-                        'cash' => 'Cash',
-                    ])
+                    ->options(config('lerin.payment_methods'))
                     ->label('Metode Pembayaran')
                     ->placeholder('Pilih metode pembayaran')
                     ->required(),

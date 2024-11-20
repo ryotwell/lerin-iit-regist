@@ -52,10 +52,7 @@ class PaymentResource extends Resource
                     ->required(),
                 // payment method
                 Forms\Components\Select::make('payment_method')
-                    ->options([
-                            'bank_transfer' => 'Bank Transfer',
-                            'cash' => 'Cash',
-                    ])
+                    ->options(config('lerin.payment_methods'))
                     ->label('Metode Pembayaran')
                     ->required(),
                 Forms\Components\FileUpload::make('receipt_image')
@@ -98,11 +95,7 @@ class PaymentResource extends Resource
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
-                ->options([
-                    'pending' => 'Menunggu Pembayaran',
-                    'approved' => 'Pembayaran Diterima',
-                    'rejected' => 'Pembayaran Ditolak',
-                ])
+                ->options(config('lerin.payment_status'))
                 ->label('Status Pembayaran'),
             ])
             ->actions([

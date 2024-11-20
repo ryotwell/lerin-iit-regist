@@ -7,7 +7,7 @@ if (! function_exists('getFeeRegistration'))
         return match($name) {
             'avoider' => 'Rp. 50.000',
             'sumo' => 'Rp. 75.000',
-            default => 'Rp. 0'
+            default => 'Rp. -'
         };
     }
 }
@@ -16,12 +16,8 @@ if (! function_exists('getPaymentStatus'))
 {
     function getPaymentStatus(string $payment): string
     {
-        return match($payment) {
-            'pending' => 'Menunggu Pembayaran',
-            'approved' => 'Pembayaran Diterima',
-            'review_status' => 'Menunggu Verifikasi',
-            default => 'Pembayaran Ditolak'
-        };
+        $payment_status = config('lerin.payment_status');
+        return $payment_status[$payment] ?? '-';
     }
 }
 
@@ -29,11 +25,9 @@ if (! function_exists('getPaymentMethod'))
 {
     function getPaymentMethod(?string $method): ?string
     {
-        return match($method) {
-            'bank_transfer' => 'Bank Transfer',
-            'cash' => 'Cash',
-            default => '-'
-        };
+        $payment_methods = config('lerin.payment_methods');
+
+        return $payment_methods[$method] ?? '-';
     }
 }
 

@@ -13,10 +13,14 @@ return [
     'whatsapp' => [
         'group' => 'https://chat.whatsapp.com/Jsd4Y2wz8I9JvmxoNBw0kJ',
     ],
+    'payment_methods' => [
+        'bank_transfer' => 'Bank Transfer',
+        'cash' => 'Cash',
+    ],
     'payment_status' => [
         'pending' => 'Menunggu Pembayaran',
         'approved' => 'Pembayaran Diterima',
         'rejected' => 'Pembayaran Ditolak',
         'review_status' => 'Menunggu Verifikasi',
-    ]
+    ],
 ];
