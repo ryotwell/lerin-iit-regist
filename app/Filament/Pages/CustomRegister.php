@@ -116,10 +116,12 @@ class CustomRegister extends BaseRegister
                 ->schema([
                     TextInput::make('participant_one_name')
                         ->label('Nama')
-                        ->columnSpanFull(),
+                        ->columnSpanFull()
+                        ->required($this->robot_category === 'avoider'),
                     TextInput::make('participant_one_nim_or_nis')
                         ->label($this->getParticipantIdentifierLabel())
                         ->numeric()
+                        ->required($this->robot_category === 'avoider')
                         ->columnSpanFull(),
             ]),
             Fieldset::make('Anggota Tim 2')

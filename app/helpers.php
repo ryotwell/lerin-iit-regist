@@ -43,7 +43,7 @@ if (! function_exists('getCategoryName'))
     {
         return match($category) {
             'sumo' => 'Game Sumo',
-            'avoider' => 'Avoider (Obstacle)',
+            'avoider' => 'Avoider (obstacle)',
             default => 'unknown'
         };
     }

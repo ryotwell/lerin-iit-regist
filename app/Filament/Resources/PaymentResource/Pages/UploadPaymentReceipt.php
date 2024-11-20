@@ -53,10 +53,11 @@ class UploadPaymentReceipt extends EditRecord
                 ->maxSize(4096),
             Forms\Components\Select::make('payment_method')
                     ->options([
-                            'bank_transfer' => 'Bank Transfer',
-                            'cash' => 'Cash',
+                        'bank_transfer' => 'Bank Transfer',
+                        'cash' => 'Cash',
                     ])
                     ->label('Metode Pembayaran')
+                    ->placeholder('Pilih metode pembayaran')
                     ->required(),
 
             \Filament\Forms\Components\View::make('components.click-button-save-after-uploaded'),

@@ -92,6 +92,7 @@
                         {{ auth()->user()->participant_two_name }}
                     </td>
                 </tr>
+                @if (auth()->user()->robot_category == 'sumo')
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         NIM {{ getParticipantLabel(auth()->user()->robot_category) }}
@@ -100,9 +101,10 @@
                         :
                     </th>
                     <td class="px-6 py-4">
-                        {{ auth()->user()->responsible_person_nim_or_nis }}
+                        {{ auth()->user()->responsible_person_nim_or_nis ?? '-' }}
                     </td>
                 </tr>
+                @endif
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         {{ auth()->user()->robot_category == 'sumo' ? 'NIM' : 'NIS' }} Anggota 1
