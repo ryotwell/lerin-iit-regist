@@ -71,7 +71,7 @@ class PaymentResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Nama Tim')
-                    ->numeric()
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('payment_method')
                     ->label('Metode Pembayaran')
