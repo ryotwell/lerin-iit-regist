@@ -94,6 +94,7 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
+                    ->sortable()
                     ->label('Nama Tim'),
                 Tables\Columns\TextColumn::make('agency')
                     ->label('Instansi'),
