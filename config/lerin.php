@@ -12,5 +12,11 @@ return [
     ],
     'whatsapp' => [
         'group' => 'https://chat.whatsapp.com/Jsd4Y2wz8I9JvmxoNBw0kJ',
+    ],
+    'payment_status' => [
+        'pending' => 'Menunggu Pembayaran',
+        'approved' => 'Pembayaran Diterima',
+        'rejected' => 'Pembayaran Ditolak',
+        'review_status' => 'Menunggu Verifikasi',
     ]
 ];

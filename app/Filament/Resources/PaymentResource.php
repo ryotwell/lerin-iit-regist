@@ -47,11 +47,7 @@ class PaymentResource extends Resource
                     ]),
                 Forms\Components\Select::make('status')
                     ->label('Status Pembayaran')
-                    ->options([
-                        'pending' => 'Menunggu Pembayaran',
-                        'approved' => 'Pembayaran Diterima',
-                        'rejected' => 'Pembayaran Ditolak',
-                    ])
+                    ->options(config('lerin.payment_status'))
                     ->default('pending')
                     ->required(),
                 // payment method

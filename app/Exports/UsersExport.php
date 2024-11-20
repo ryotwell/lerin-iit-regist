@@ -29,14 +29,14 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
             'Status Pembayaran',
             'Metode Pembayaran',
 
-            'Penanggung Jawab',
+            'Ketua/Penanggung Jawab',
             'Whatsapp',
 
-            'Nama Peserta 1',
-            'Nama Peserta 2',
+            'Nama Anggota 1',
+            'Nama Anggota 2',
 
-            'NIM/NIS Peserta 1',
-            'NIM/NIS Peserta 2',
+            'NIM/NIS Anggota 1',
+            'NIM/NIS Anggota 2',
 
             'Email',
         ];

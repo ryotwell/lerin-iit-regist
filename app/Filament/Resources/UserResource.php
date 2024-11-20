@@ -99,10 +99,10 @@ class UserResource extends Resource
                     ->label('Instansi'),
                 Tables\Columns\TextColumn::make('robot_category')
                     ->label('Kategori Robot')
-                    ->getStateUsing(fn (User $user) => $user->robot_category === 'sumo' ? 'Sumo Game' : 'Avoider (Obstacle)'),
+                    ->getStateUsing(fn (User $user) => $user->robot_category === 'sumo' ? 'Sumo Game' : 'Avoider (obstacle)'),
                 Tables\Columns\TextColumn::make('responsible_person_name')
                     ->searchable()
-                    ->label('Penanggung Jawab Tim'),
+                    ->label('Ketua/Penanggung Jawab Tim'),
                 Tables\Columns\TextColumn::make('whatsapp_number')
                     ->searchable()
                     ->label('Whatsapp'),
