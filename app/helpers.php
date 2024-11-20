@@ -53,3 +53,15 @@ if (! function_exists('getParticipantLabel'))
         };
     }
 }
+
+if (! function_exists('getParticipantIdentifierLabel'))
+{
+    function getParticipantIdentifierLabel(string | null $robot_category): string
+    {
+        return match ($robot_category) {
+            'sumo' => 'NIM (Nomor Induk Mahasiswa)',
+            'avoider' => 'NIS (Nomor Induk Siswa)',
+            default => '-',
+        };
+    }
+}

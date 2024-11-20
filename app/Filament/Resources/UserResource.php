@@ -53,37 +53,39 @@ class UserResource extends Resource
                     ])
                     ->placeholder('Pilih salah satu kategori robot')
                     ->default(request()->query('robot_category')),
-                Forms\Components\TextInput::make('role')
-                    ->required(),
+                Forms\Components\Select::make('role')
+                    ->options([
+                        'admin' => 'Admin',
+                        'user' => 'User',
+                    ])
+                    ->required()
+                ,
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required(),
                 Forms\Components\Fieldset::make('Penanggung Jawab')
                     ->schema([
                         Forms\Components\TextInput::make('responsible_person_name')
-                            ->required()
                             ->label('Nama'),
                         Forms\Components\TextInput::make('whatsapp_number')
                             ->label('Nomor Whatsapp')
                             ->numeric(),
+                        Forms\Components\TextInput::make('responsible_person_nim_or_nis')
+                            ->label(fn (callable $get) => getParticipantIdentifierLabel($get('robot_category'))),
                 ]),
                 Forms\Components\Fieldset::make('Anggota Tim 1')
                     ->schema([
                         Forms\Components\TextInput::make('participant_one_name')
-                            ->required()
                             ->label('Nama'),
                         Forms\Components\TextInput::make('participant_one_nim_or_nis')
-                            ->required()
-                            ->label('NIM / NIS'),
+                            ->label(fn (callable $get) => getParticipantIdentifierLabel($get('robot_category'))),
                 ]),
                 Forms\Components\Fieldset::make('Anggota Tim 2')
                     ->schema([
                         Forms\Components\TextInput::make('participant_two_name')
-                            ->required()
                             ->label('Nama'),
                         Forms\Components\TextInput::make('participant_two_nim_or_nis')
-                            ->required()
-                            ->label('NIM / NIS'),
+                            ->label(fn (callable $get) => getParticipantIdentifierLabel($get('robot_category'))),
                 ]),
             ]);
     }

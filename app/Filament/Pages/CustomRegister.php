@@ -101,7 +101,7 @@ class CustomRegister extends BaseRegister
                         ->columnSpanFull(),
                     TextInput::make('responsible_person_nim_or_nis')
                         ->hidden(fn () => $this->robot_category !== 'sumo')
-                        ->label($this->getParticipantIdentifierLabel())
+                        ->label(getParticipantIdentifierLabel($this->robot_category))
                         ->required()
                         ->numeric()
                         ->columnSpanFull(),
@@ -119,7 +119,7 @@ class CustomRegister extends BaseRegister
                         ->columnSpanFull()
                         ->required($this->robot_category === 'avoider'),
                     TextInput::make('participant_one_nim_or_nis')
-                        ->label($this->getParticipantIdentifierLabel())
+                        ->label(getParticipantIdentifierLabel($this->robot_category))
                         ->numeric()
                         ->required($this->robot_category === 'avoider')
                         ->columnSpanFull(),
@@ -131,7 +131,7 @@ class CustomRegister extends BaseRegister
                         ->label('Nama')
                         ->columnSpanFull(),
                     TextInput::make('participant_two_nim_or_nis')
-                        ->label($this->getParticipantIdentifierLabel())
+                        ->label(getParticipantIdentifierLabel($this->robot_category))
                         ->numeric()
                         ->columnSpanFull(),
             ]),
@@ -139,14 +139,6 @@ class CustomRegister extends BaseRegister
         ]);
     }
 
-    public function getParticipantIdentifierLabel(): string
-    {
-        return match ($this->robot_category) {
-            'sumo' => 'NIM (Nomor Induk Mahasiswa)',
-            'avoider' => 'NIS (Nomor Induk Siswa)',
-            default => '-',
-        };
-    }
     public function register(): ?RegistrationResponse
     {
         try {
