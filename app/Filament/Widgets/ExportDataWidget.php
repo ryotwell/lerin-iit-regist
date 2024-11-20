@@ -10,7 +10,7 @@ class ExportDataWidget extends Widget
 {
     protected static string $view = 'filament.widgets.export-data-widget';
 
-    protected static ?int $sort = 1;
+    protected static ?int $sort = 99;
 
     public function export()
     {

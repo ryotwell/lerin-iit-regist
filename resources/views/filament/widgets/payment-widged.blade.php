@@ -1,16 +1,15 @@
 <x-filament-widgets::widget>
     <x-filament::section>
-        <div>
+        <div class="md:max-w-3xl">
             @if (auth()->user()->payment->status === 'approved')
-            <div class="text-gray-600 dark:text-gray-300 mb-8">
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400">
                 <div class="mb-4">
-                    Proses administrasi telah selesai dan di terima, masuk ke grub whatsapp di bawah untuk menunggu arahan dan informasi selengkapnya dari pihak panitia.
+                    Proses administrasi telah selesai, silahkan masuk ke grub whatsapp di bawah untuk menunggu arahan dan informasi selengkapnya dari pihak panitia.
                 </div>
                 <div>
-                    <a href="{{ config('lerin.whatsapp.group') }}" class="text-sm underline text-blue-500 flex items-center" target="_blank" rel="noreferrer">
+                    <x-filament::link href="{{ config('lerin.whatsapp.group') }}" class="underline" target="_blank" rel="noreferrer">
                         Masuk ke grub whatsapp
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
-                    </a>
+                    </x-filament::link>
                 </div>
             </div>
             @else
