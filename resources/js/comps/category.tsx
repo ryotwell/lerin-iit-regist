@@ -16,6 +16,7 @@ type CardData = {
     participant: string
     challengeType: string
     feeRegistration: string
+    panduanDriveUrl?: string
     subCards?: SubCard[]
 }
 
@@ -28,6 +29,7 @@ const data: CardData[] = [
         participant: '1 tim terdiri dari 3 peserta (+ ketua tim)',
         challengeType: 'Setiap robot harus mendorong lawan keluar dari arena untuk memenangkan permainan.',
         feeRegistration: 'Rp. 75.000',
+        panduanDriveUrl: 'https://drive.google.com/drive/folders/1hT8jyQm5kDMz3wsDgAYGfvFQ--Cg-e0K?usp=sharing',
         subCards: [
             {
                 title: 'Timeline',
@@ -127,6 +129,7 @@ const CreateContent: React.FC<CardData> = ({
     challengeType,
     subCards,
     feeRegistration,
+    panduanDriveUrl
 }) => {
     return (
         <>
@@ -165,11 +168,13 @@ const CreateContent: React.FC<CardData> = ({
                             Daftar Sekarang
                         </a>
                     </Button>
-                    {/* <Button asChild>
-                        <a href={`/panel/register?robot_category=${id}`}>
-                            Download Panduan
-                        </a>
-                    </Button> */}
+                    {panduanDriveUrl ? (
+                        <Button asChild>
+                            <a href={panduanDriveUrl} target="_blank" rel="noreferrer">
+                                Download Panduan
+                            </a>
+                        </Button>
+                    ) : ''}
                 </div>
             </div>
             {subCards?.map(({ body, title }, index) => {
