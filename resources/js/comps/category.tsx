@@ -171,7 +171,7 @@ const CreateContent: React.FC<CardData> = ({
                     {panduanDriveUrl ? (
                         <Button asChild>
                             <a href={panduanDriveUrl} target="_blank" rel="noreferrer">
-                                Download Panduan
+                                Unduh Panduan
                             </a>
                         </Button>
                     ) : ''}
