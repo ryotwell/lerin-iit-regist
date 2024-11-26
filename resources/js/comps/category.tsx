@@ -77,6 +77,7 @@ const data: CardData[] = [
         participant: '1 tim terdiri dari 2 peserta',
         challengeType: 'Buatlah robot yang menghindari tabrakan dengan rintangan saat bergerak dari posisi awal ke tujuan di dalam arena.',
         feeRegistration: 'Rp. 50.000',
+        panduanDriveUrl: 'https://drive.google.com/drive/folders/1vk49ZgjI2iQDSj4692ekRkDodkZxnnlD?usp=sharing',
         subCards: [
             {
                 title: 'Timeline',
