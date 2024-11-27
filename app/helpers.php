@@ -61,6 +61,18 @@ if (! function_exists('getParticipantIdentifierLabel'))
         return match ($robot_category) {
             'sumo' => 'NIM (Nomor Induk Mahasiswa)',
             'avoider' => 'NIS (Nomor Induk Siswa)',
+            default => '',
+        };
+    }
+}
+
+if (! function_exists('getParticipantWhatsappURL'))
+{
+    function getParticipantWhatsappURL(string | null $robot_category): string
+    {
+        return match ($robot_category) {
+            'sumo' => config('lerin.whatsapp_groups.sumo'),
+            'avoider' => config('lerin.whatsapp_groups.avoider'),
             default => '-',
         };
     }

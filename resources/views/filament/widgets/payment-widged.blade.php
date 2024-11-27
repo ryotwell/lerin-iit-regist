@@ -7,7 +7,7 @@
                     Proses administrasi telah selesai, silahkan masuk ke grub whatsapp di bawah untuk menunggu arahan dan informasi selengkapnya dari pihak panitia.
                 </div>
                 <div>
-                    <x-filament::link href="{{ config('lerin.whatsapp.group') }}" class="underline" target="_blank" rel="noreferrer">
+                    <x-filament::link href="{{ getParticipantWhatsappURL(auth()->user()->robot_category) }}" class="underline" target="_blank" rel="noreferrer">
                         Masuk ke grub whatsapp
                     </x-filament::link>
                 </div>

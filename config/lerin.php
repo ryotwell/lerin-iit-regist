@@ -10,8 +10,9 @@ return [
         'phone' => '6285737074723',
         'whatsapp' => 'https://wa.me/6285737074723',
     ],
-    'whatsapp' => [
-        'group' => 'https://chat.whatsapp.com/Jsd4Y2wz8I9JvmxoNBw0kJ',
+    'whatsapp_groups' => [
+        'sumo' => 'https://chat.whatsapp.com/Jsd4Y2wz8I9JvmxoNBw0kJ',
+        'avoider' => 'https://chat.whatsapp.com/FrPKoPMynld4dw6U89UgsL'
     ],
     'payment_methods' => [
         'bank_transfer' => 'Bank Transfer',
