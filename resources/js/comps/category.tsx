@@ -26,7 +26,7 @@ const data: CardData[] = [
         category: 'Tingkat Mahasiswa/Umum',
         title: 'Sumo Game',
         src: '/categories/3.png',
-        participant: '1 tim terdiri dari 3 peserta (+ ketua tim)',
+        participant: '1 tim terdiri dari 3 peserta termasuk ketua tim',
         challengeType: 'Setiap robot harus mendorong lawan keluar dari arena untuk memenangkan permainan.',
         feeRegistration: 'Rp. 75.000',
         panduanDriveUrl: 'https://drive.google.com/drive/folders/1hT8jyQm5kDMz3wsDgAYGfvFQ--Cg-e0K?usp=sharing',
