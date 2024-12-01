@@ -43,7 +43,7 @@
                 </x-filament::link>
             </div>
             <p class="text-gray-600 dark:text-gray-300 mb-8">
-                Jika sudah melakukan transfer, silahkan tunggu admin untuk melakukan konfirmasi pada pembayaran anda.
+                Jika sudah upload bukti transfer, silahkan tunggu admin untuk melakukan konfirmasi pada pembayaran anda.
             </p>
             @endif
             <x-admin-contact />
