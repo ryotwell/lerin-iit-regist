@@ -40,7 +40,7 @@
                 @if (auth()->user()->robot_category == 'sumo')
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        NIM {{ getParticipantLabel(auth()->user()->robot_category) }}
+                        NIM/NIS/NIK {{ getParticipantLabel(auth()->user()->robot_category) }}
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
@@ -52,7 +52,7 @@
                 @endif
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        {{ auth()->user()->robot_category == 'sumo' ? 'NIM' : 'NIS' }} Anggota 1
+                        NIM/NIS/NIK Anggota 1
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :
@@ -63,7 +63,7 @@
                 </tr>
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        {{ auth()->user()->robot_category == 'sumo' ? 'NIM' : 'NIS' }} Anggota 2
+                        NIM/NIS/NIK Anggota 2
                     </th>
                     <th scope="col" class="px-6 py-3">
                         :

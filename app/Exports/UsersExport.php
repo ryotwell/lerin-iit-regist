@@ -29,9 +29,8 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
             'Status Pembayaran',
             'Metode Pembayaran',
 
-            'Ketua/Penanggung Jawab',
             'Whatsapp',
-
+            'Ketua/Penanggung Jawab',
             'Nama Anggota 1',
             'Nama Anggota 2',
 
@@ -52,8 +51,8 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping, WithColu
             getPaymentStatus($user->payment->status),
             getPaymentMethod($user->payment->payment_method),
 
-            $user->responsible_person_name ?? '-',
             $user->whatsapp_number ?? '-',
+            $user->responsible_person_name ?? '-',
 
             $user->participant_one_name ?? '-',
             $user->participant_two_name ?? '-',

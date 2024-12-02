@@ -89,8 +89,8 @@ class CustomRegister extends BaseRegister
 
             View::make('components.divider')
                 ->hidden(fn () => empty($this->robot_category)),
-            View::make('components.sign-up-team')
-                ->hidden(fn () => empty($this->robot_category)),
+            // View::make('components.sign-up-team')
+            //     ->hidden(fn () => empty($this->robot_category)),
 
             Fieldset::make(getParticipantLabel($this->robot_category))
                 ->hidden(fn () => empty($this->robot_category))
@@ -101,7 +101,8 @@ class CustomRegister extends BaseRegister
                         ->columnSpanFull(),
                     TextInput::make('responsible_person_nim_or_nis')
                         ->hidden(fn () => $this->robot_category !== 'sumo')
-                        ->label(getParticipantIdentifierLabel($this->robot_category))
+                        ->label('NIM/NIS')
+                        ->helperText('atau masukkan NIK jika tidak memiliki NIM/NIS')
                         ->required()
                         ->numeric()
                         ->columnSpanFull(),
@@ -119,7 +120,8 @@ class CustomRegister extends BaseRegister
                         ->columnSpanFull()
                         ->required($this->robot_category === 'avoider'),
                     TextInput::make('participant_one_nim_or_nis')
-                        ->label(getParticipantIdentifierLabel($this->robot_category))
+                        ->label('NIM/NIS')
+                        ->helperText('atau masukkan NIK jika tidak memiliki NIM/NIS')
                         ->numeric()
                         ->required($this->robot_category === 'avoider')
                         ->columnSpanFull(),
@@ -131,7 +133,8 @@ class CustomRegister extends BaseRegister
                         ->label('Nama')
                         ->columnSpanFull(),
                     TextInput::make('participant_two_nim_or_nis')
-                        ->label(getParticipantIdentifierLabel($this->robot_category))
+                        ->label('NIM/NIS')
+                        ->helperText('atau masukkan NIK jika tidak memiliki NIM/NIS')
                         ->numeric()
                         ->columnSpanFull(),
             ]),

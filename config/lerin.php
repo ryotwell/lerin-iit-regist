@@ -4,7 +4,7 @@ return [
     'bank' => [
         'name' => 'Mandiri',
         'account_number' => '1610005318337',
-        'account_name' => 'Muhammad Farid Hidayat',
+        'account_name' => 'Muhammad Farid Hiday',
     ],
     'admin' => [
         'phone' => '6285737074723',
