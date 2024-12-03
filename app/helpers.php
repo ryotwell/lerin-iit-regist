@@ -85,6 +85,11 @@ if( ! function_exists('getWhatsappMessage'))
         $category_label = getCategoryName($robot_category);
         $grub_link = getParticipantWhatsappURL($robot_category);
 
+        // if whatsapp start with 08, remove 08 and add 62
+        if (str_starts_with($whatsapp, '08')) {
+            $whatsapp = '62' . substr($whatsapp, 1);
+        }
+
         $text = "Kami dari panitia Robotic Competition ingin mengonfirmasi bahwa pembayaran Anda telah kami terima. 🙏
 
 Silakan bergabung ke grup WhatsApp kategori {$category_label}. Berikut adalah tautannya:
@@ -93,6 +98,6 @@ Silakan bergabung ke grup WhatsApp kategori {$category_label}. Berikut adalah ta
 Jika ada pertanyaan, jangan ragu untuk menghubungi kami.
 Sampai jumpa di kompetisi! 🚀";
 
-        return "https://wa.me/send?phone={$whatsapp}&text={$text}";
+        return "https://api.whatsapp.com/send?phone={$whatsapp}&text={$text}";
     }
 }
