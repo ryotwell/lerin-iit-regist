@@ -93,6 +93,6 @@ Silakan bergabung ke grup WhatsApp kategori {$category_label}. Berikut adalah ta
 Jika ada pertanyaan, jangan ragu untuk menghubungi kami.
 Sampai jumpa di kompetisi! 🚀";
 
-        return "https://api.whatsapp.com/send?phone={$whatsapp}&text={$text}";
+        return "https://wa.me/send?phone={$whatsapp}&text={$text}";
     }
 }
