@@ -58,7 +58,7 @@ export function HeroSection() {
                     />
                 </RainbowButton>
             </div>
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-8" data-aos="fade-up" data-aos-delay="600">
                 <Countdown />
             </div>
         </HeroHighlight>
