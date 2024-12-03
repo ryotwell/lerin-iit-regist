@@ -22,8 +22,11 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class PanelPanelProvider extends PanelProvider
 {
+    private string $targetDate = '2024-12-11';
+
     public function panel(Panel $panel): Panel
     {
+
         return $panel
             ->default()
             ->defaultThemeMode(ThemeMode::Dark)
@@ -31,7 +34,7 @@ class PanelPanelProvider extends PanelProvider
             ->path('panel')
             ->login()
             ->registration(
-                CustomRegister::class
+                now() <= $this->targetDate ? CustomRegister::class : null
             )
             ->colors([
                 'primary' => Color::Amber,
