@@ -84,6 +84,14 @@ class PaymentResource extends Resource
                     ->extraAttributes([
                         'class' => 'text-blue-500 underline hover:text-blue-700'
                     ]),
+                Tables\Columns\TextColumn::make('whatsapp_link')
+                    ->label('Kirim Pesan WhatsApp')
+                    ->getStateUsing(fn () => 'Kirim')
+                    ->url(fn ($record) => getWhatsappMessage($record->user->robot_category, $record->user->whatsapp_number))
+                    ->openUrlInNewTab()
+                    ->extraAttributes([
+                        'class' => 'text-green-500 underline hover:text-green-700'
+                    ]),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

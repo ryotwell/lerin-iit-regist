@@ -77,3 +77,22 @@ if (! function_exists('getParticipantWhatsappURL'))
         };
     }
 }
+
+if( ! function_exists('getWhatsappMessage'))
+{
+    function getWhatsappMessage(string | null $robot_category, string $whatsapp): string
+    {
+        $category_label = getCategoryName($robot_category);
+        $grub_link = getParticipantWhatsappURL($robot_category);
+
+        $text = "Kami dari panitia Robotic Competition ingin mengonfirmasi bahwa pembayaran Anda telah kami terima. 🙏
+
+Silakan bergabung ke grup WhatsApp kategori {$category_label}. Berikut adalah tautannya:
+{$grub_link}
+
+Jika ada pertanyaan, jangan ragu untuk menghubungi kami.
+Sampai jumpa di kompetisi! 🚀";
+
+        return "https://api.whatsapp.com/send?phone={$whatsapp}&text={$text}";
+    }
+}
