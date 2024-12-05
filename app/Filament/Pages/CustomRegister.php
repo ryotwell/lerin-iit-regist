@@ -104,7 +104,6 @@ class CustomRegister extends BaseRegister
                         ->label('NIM/NIS')
                         ->helperText('atau masukkan NIK jika tidak memiliki NIM/NIS')
                         ->required()
-                        ->numeric()
                         ->columnSpanFull(),
                     TextInput::make('whatsapp_number')
                         ->label('Nomor Whatsapp')
@@ -122,7 +121,6 @@ class CustomRegister extends BaseRegister
                     TextInput::make('participant_one_nim_or_nis')
                         ->label('NIM/NIS')
                         ->helperText('atau masukkan NIK jika tidak memiliki NIM/NIS')
-                        ->numeric()
                         ->required($this->robot_category === 'avoider')
                         ->columnSpanFull(),
             ]),
@@ -135,7 +133,6 @@ class CustomRegister extends BaseRegister
                     TextInput::make('participant_two_nim_or_nis')
                         ->label('NIM/NIS')
                         ->helperText('atau masukkan NIK jika tidak memiliki NIM/NIS')
-                        ->numeric()
                         ->columnSpanFull(),
             ]),
             View::make('components.admin-contact'),
