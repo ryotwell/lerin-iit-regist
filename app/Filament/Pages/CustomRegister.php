@@ -19,31 +19,31 @@ class CustomRegister extends BaseRegister
 {
     use InteractsWithForms;
 
-    public string | null $name;
+    public string | null $name = null;
 
-    public string | null $email;
+    public string | null $email = null;
 
-    public string | null $password;
+    public string | null $password = null;
 
-    public string | null $passwordConfirmation;
+    public string | null $passwordConfirmation = null;
 
-    public string | null $agency;
+    public string | null $agency = null;
 
-    public string | null $robot_category;
+    public string | null $robot_category = null;
 
-    public string | null $whatsapp_number;
+    public string | null $whatsapp_number = null;
 
-    public string | null $responsible_person_name;
+    public string | null $responsible_person_name = null;
 
-    public string | null $responsible_person_nim_or_nis;
+    public string | null $responsible_person_nim_or_nis = null;
 
-    public string | null $participant_one_name;
+    public string | null $participant_one_name = null;
 
-    public string | null $participant_one_nim_or_nis;
+    public string | null $participant_one_nim_or_nis = null;
 
-    public string | null $participant_two_name;
+    public string | null $participant_two_name = null;
 
-    public string | null $participant_two_nim_or_nis;
+    public string | null $participant_two_nim_or_nis = null;
 
     public function __construct()
     {
