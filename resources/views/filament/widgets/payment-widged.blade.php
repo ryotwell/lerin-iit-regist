@@ -15,7 +15,9 @@
             @else
             <div class="text-gray-600 dark:text-gray-300 mb-8">
                 <div class="mb-4">
-                    <x-is-hamzanwadi />
+                    @if(auth()->user()->agency === "Universitas Hamzanwadi")
+                        <x-is-hamzanwadi />
+                    @endif
                 </div>
                 <p class="mb-4">Langkah selanjutnya menyelesaikan biaya pendaftaran melalui transfer bank sebesar
                     <span class="font-bold">{{ getFeeRegistration(auth()->user()->robot_category, auth()->user()->agency) }}</span> ke rekening berikut :
