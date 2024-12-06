@@ -1,3 +1,5 @@
+import ApplicationLogo from "./application-logo";
+
 export function FooterSection() {
     return (
         <footer className="bg-white shadow dark:bg-slate-950">
@@ -7,11 +9,7 @@ export function FooterSection() {
                         href="#!"
                         className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
                     >
-                        <img
-                            className="h-10 rounded-lg"
-                            src="/lerin-black.png"
-                            alt="Lerin NTB"
-                        />
+                        <ApplicationLogo />
                     </a>
                     <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                         <li>
