@@ -24,4 +24,8 @@ return [
         'rejected' => 'Pembayaran Ditolak',
         'review_status' => 'Menunggu Verifikasi',
     ],
+    'panduan' => [
+        'sumo' => 'https://drive.google.com/drive/folders/1hT8jyQm5kDMz3wsDgAYGfvFQ--Cg-e0K?usp=sharing',
+        'avoider' => 'https://drive.google.com/drive/folders/1vk49ZgjI2iQDSj4692ekRkDodkZxnnlD?usp=sharing',
+    ]
 ];

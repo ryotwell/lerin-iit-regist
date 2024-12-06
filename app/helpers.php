@@ -2,15 +2,18 @@
 
 if (! function_exists('getFeeRegistration'))
 {
-    function getFeeRegistration(string $name): string
+    function getFeeRegistration(string $name, string | null $agency): string
     {
-        return match($name) {
+        $isUniversitasHamzanwadi = $agency === 'Universitas Hamzanwadi';
+        
+        $fees = [
             'avoider' => 'Rp. 50.000',
-            'sumo' => 'Rp. 75.000',
-            default => 'Rp. -'
-        };
-    }
-}
+            'sumo' => $isUniversitasHamzanwadi ? 'Rp. 50.000' : 'Rp. 75.000',
+            'default' => 'Rp. -'
+        ];
+
+        return $fees[$name] ?? $fees['default'];
+    }}
 
 if (! function_exists('getPaymentStatus'))
 {
@@ -36,7 +39,7 @@ if (! function_exists('getCategoryName'))
     function getCategoryName(string $category): string
     {
         return match($category) {
-            'sumo' => 'Game Sumo',
+            'sumo' => 'Sumo Game',
             'avoider' => 'Avoider (obstacle)',
             default => 'unknown'
         };

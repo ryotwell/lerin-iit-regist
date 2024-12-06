@@ -74,7 +74,14 @@ class CustomRegister extends BaseRegister
             TextInput::make('agency')
                 ->label('Asal Instansi')
                 ->helperText('Contoh: Universitas Hamzanwadi/SMKN 1 Selong')
-                ->required(),
+                ->required()
+                ->reactive()
+                ->afterStateUpdated(fn ($state) => $this->agency = $state),
+
+                
+            View::make('components.is-hamzanwadi')
+                ->hidden(fn () => $this->agency !== 'Universitas Hamzanwadi'),
+
             Select::make('robot_category')
                 ->required()
                 ->label('Kategori Robot')

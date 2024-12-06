@@ -4,11 +4,11 @@ namespace App\Filament\Widgets;
 
 use Filament\Widgets\Widget;
 
-class PaymentWidged extends Widget
+class TechnicalCompetition extends Widget
 {
-    protected static string $view = 'filament.widgets.payment-widged';
+    protected static string $view = 'filament.widgets.technical-competition';
 
-    protected static ?int $sort = 2;
+    protected static ?int $sort = 1;
 
     protected static bool $isLazy = false;
 
