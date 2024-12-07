@@ -50,8 +50,8 @@ class UserResource extends Resource
                     ->required()
                     ->label('Kategori Robot')
                     ->options([
-                            'sumo' => 'Sumo Game',
-                            'avoider' => 'Avoider (obstacle)',
+                        'sumo' => 'Sumo Game',
+                        'avoider' => 'Avoider (obstacle)',
                     ])
                     ->placeholder('Pilih salah satu kategori robot')
                     ->default(request()->query('robot_category')),
@@ -97,21 +97,26 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Nama Tim')
                     ->searchable()
-                    ->sortable()
-                    ->label('Nama Tim'),
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('agency')
-                    ->label('Instansi'),
+                    ->label('Instansi')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('robot_category')
                     ->label('Kategori Robot')
+                    ->sortable()
                     ->getStateUsing(fn (User $user) => $user->robot_category === 'sumo' ? 'Sumo Game' : 'Avoider (obstacle)'),
                 Tables\Columns\TextColumn::make('responsible_person_name')
-                    ->searchable()
                     ->label('Ketua/Penanggung Jawab Tim')
+                    ->searchable()
+                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('whatsapp_number')
-                    ->searchable()
                     ->label('Whatsapp')
+                    ->searchable()
+                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('payment.payment_method')
                     ->label('Metode Pembayaran')
@@ -124,7 +129,6 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('payment.receipt_image')
                     ->label('Bukti Pembayaran')
                     ->getStateUsing(fn () => 'Lihat')
-                    // ->url(fn ($record) => asset('storage/' . $record->payment->receipt_image))
                     ->url(fn ($record) => asset('storage/' . $record->payment?->receipt_image))
                     ->openUrlInNewTab()
                     ->extraAttributes([
@@ -160,6 +164,24 @@ class UserResource extends Resource
                         return $query->whereHas('payment', function ($query) use ($data) {
                             $query->where('status', $data['value']);
                         });
+                    }),
+                Tables\Filters\Filter::make('created_at')
+                    ->form([
+                        Forms\Components\DatePicker::make('created_from')
+                            ->label('Dari Tanggal'),
+                        Forms\Components\DatePicker::make('created_until')
+                            ->label('Sampai Tanggal'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['created_from'],
+                                fn (Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
+                            )
+                            ->when(
+                                $data['created_until'],
+                                fn (Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
+                            );
                     })
             ])
             ->actions([
