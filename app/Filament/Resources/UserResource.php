@@ -15,8 +15,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
 {
-    protected static ?string $model = User::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function shouldRegisterNavigation(): bool
@@ -105,17 +103,25 @@ class UserResource extends Resource
                     ->getStateUsing(fn (User $user) => $user->robot_category === 'sumo' ? 'Sumo Game' : 'Avoider (obstacle)'),
                 Tables\Columns\TextColumn::make('responsible_person_name')
                     ->searchable()
-                    ->label('Ketua/Penanggung Jawab Tim'),
+                    ->label('Ketua/Penanggung Jawab Tim')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('whatsapp_number')
                     ->searchable()
-                    ->label('Whatsapp'),
+                    ->label('Whatsapp')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('payment.status')
+                    ->label('Status Pembayaran')
+                    ->getStateUsing(fn ($record) => getPaymentStatus($record->payment->status))
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->dateTime('d F, Y')
                     ->sortable()
+                    ->label('Dibuat Pada')
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->dateTime('d F, Y')
                     ->sortable()
+                    ->label('Diperbarui Pada')
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
@@ -124,7 +130,7 @@ class UserResource extends Resource
                         'sumo' => 'Sumo Game',
                         'avoider' => 'Avoider (Obstacle)',
                     ])
-                    ->label('Kategori Robot')
+                    ->label('Kategori Robot'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
