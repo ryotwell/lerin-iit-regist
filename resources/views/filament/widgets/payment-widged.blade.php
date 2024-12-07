@@ -15,7 +15,7 @@
             @else
             <div class="text-gray-600 dark:text-gray-300 mb-8">
                 <div class="mb-4">
-                    @if(auth()->user()->agency === "Universitas Hamzanwadi")
+                    @if(isHamzanwadiStudent(auth()->user()->agency))
                         <x-is-hamzanwadi />
                     @endif
                 </div>

@@ -107,3 +107,14 @@ Sampai jumpa di kompetisi! 🚀";
         return "https://api.whatsapp.com/send?phone={$whatsapp}&text={$encoded_text}";
     }
 }
+
+if( ! function_exists('isHamzanwadiStudent'))
+{
+    function isHamzanwadiStudent(string | null $agency): bool
+    {
+        if(!$agency) return false;
+
+        $normalizedAgency = strtoupper(trim($agency));
+        return str_contains($normalizedAgency, 'UNIVERSITAS HAMZANWADI');
+    }
+}

@@ -78,9 +78,8 @@ class CustomRegister extends BaseRegister
                 ->reactive()
                 ->afterStateUpdated(fn ($state) => $this->agency = $state),
 
-                
             View::make('components.is-hamzanwadi')
-                ->hidden(fn () => $this->agency !== 'Universitas Hamzanwadi'),
+                ->hidden(fn () => !isHamzanwadiStudent($this->agency)),
 
             Select::make('robot_category')
                 ->required()
