@@ -4,6 +4,7 @@ namespace App\Filament\Resources\PaymentResource\Pages;
 
 use App\Filament\Resources\PaymentResource;
 use Filament\Actions;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
 
 class EditPayment extends EditRecord
@@ -13,7 +14,13 @@ class EditPayment extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            // Actions\DeleteAction::make(),
+            Action::make('view_receipt')
+                ->label('View Receipt')
+                ->url(fn ($record) => asset('storage/' . $record?->receipt_image))
+                ->visible(fn ($record) => $record?->receipt_image)
+                ->icon('heroicon-o-photo')
+                ->openUrlInNewTab(),
         ];
     }
 

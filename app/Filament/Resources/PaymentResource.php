@@ -20,14 +20,9 @@ class PaymentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function shouldRegisterNavigation(): bool
-    {
-        return auth()->user() && auth()->user()->hasRole('admin');
-    }
-
     public static function getNavigationLabel(): string
     {
-        return 'Daftar Pembayaran';
+        return 'Pembayaran';
     }
 
     public static function form(Form $form): Form
@@ -103,8 +98,8 @@ class PaymentResource extends Resource
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
-                ->options(config('lerin.payment_status'))
-                ->label('Status Pembayaran'),
+                    ->options(config('lerin.payment_status'))
+                    ->label('Status Pembayaran'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -121,6 +116,11 @@ class PaymentResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getNavigationUrl(): string
+    {
+        return static::getUrl('upload', [auth()->user()->payment->id]);
     }
 
     public static function getPages(): array

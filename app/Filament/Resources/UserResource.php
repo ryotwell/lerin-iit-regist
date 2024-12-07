@@ -109,9 +109,23 @@ class UserResource extends Resource
                     ->searchable()
                     ->label('Whatsapp')
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('payment.payment_method')
+                    ->label('Metode Pembayaran')
+                    ->getStateUsing(fn ($record) => getPaymentMethod($record->payment->payment_method))
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('payment.status')
                     ->label('Status Pembayaran')
                     ->getStateUsing(fn ($record) => getPaymentStatus($record->payment->status))
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('payment.receipt_image')
+                    ->label('Bukti Pembayaran')
+                    ->getStateUsing(fn () => 'Lihat')
+                    // ->url(fn ($record) => asset('storage/' . $record->payment->receipt_image))
+                    ->url(fn ($record) => asset('storage/' . $record->payment?->receipt_image))
+                    ->openUrlInNewTab()
+                    ->extraAttributes([
+                        'class' => 'text-blue-500 underline hover:text-blue-700'
+                    ])
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d F, Y')
@@ -131,9 +145,28 @@ class UserResource extends Resource
                         'avoider' => 'Avoider (Obstacle)',
                     ])
                     ->label('Kategori Robot'),
+                Tables\Filters\SelectFilter::make('payment_status')
+                    ->label('Status Pembayaran')
+                    ->options(config('lerin.payment_status'))
+                    ->query(function (Builder $query, array $data) {
+                        if (!$data['value']) {
+                            return $query;
+                        }
+                        
+                        return $query->whereHas('payment', function ($query) use ($data) {
+                            $query->where('status', $data['value']);
+                        });
+                    })
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label('Tim'),
+                Tables\Actions\Action::make('edit_payment')
+                    ->label('Payment')
+                    ->url(fn ($record) => "/panel/payments/{$record->payment->id}/edit")
+                    ->icon('heroicon-o-currency-dollar')
+                    ->color('success')
+                    ->visible(fn ($record) => $record->payment !== null),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
