@@ -16,6 +16,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class UserResource extends Resource
 {
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    
+    protected static ?string $modelLabel = 'Team';
+
+    // protected static ?string $pluralModelLabel = 'Team';
 
     public static function shouldRegisterNavigation(): bool
     {
@@ -160,7 +164,7 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                    ->label('Tim'),
+                    ->label('Team'),
                 Tables\Actions\Action::make('edit_payment')
                     ->label('Payment')
                     ->url(fn ($record) => "/panel/payments/{$record->payment->id}/edit")
