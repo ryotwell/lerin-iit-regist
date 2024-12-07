@@ -37,7 +37,7 @@ class PanelPanelProvider extends PanelProvider
                 now() <= $this->targetDate ? CustomRegister::class : null
             )
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
             ->viteTheme('resources/css/app.css')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

@@ -21,8 +21,8 @@ export function FooterSection() {
                             </a>
                         </li>
                         <li>
-                            <a href={`https://wa.me/6285737074723`} target="_blank" className="hover:underline">
-                                Contact
+                            <a href="#!" className="hover:underline">
+                                Contact Support: 6285737074723
                             </a>
                         </li>
                     </ul>

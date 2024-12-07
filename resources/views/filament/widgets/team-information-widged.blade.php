@@ -64,8 +64,5 @@
         <div class="p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
             Silahkan hubungi admin jika ada perubahan pada informasi tim.
         </div>
-        <x-filament::link href="{{ config('lerin.admin.whatsapp') }}" class="underline mt-6" target="_blank">
-            Edit Informasi Tim
-        </x-filament::link>
     </x-filament::section>
 </x-filament-widgets::widget>

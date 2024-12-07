@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 function Countdown() {
-    const targetDate = new Date('December 10, 2024').getTime()
+    const targetDate = new Date('December 11, 2024').getTime()
     const [timeLeft, setTimeLeft] = React.useState({
         days: 0,
         hours: 0,
@@ -29,7 +29,7 @@ function Countdown() {
 
     return (
         <>
-            <h3 className="text-slate-600 dark:text-slate-400">{timeLeft.days} Hari, {timeLeft.hours} Jam, {timeLeft.minutes} Menit, {timeLeft.seconds} Detik</h3>
+            <h3 className="text-purple-600 dark:text-purple-400">{timeLeft.days} Hari, {timeLeft.hours} Jam, {timeLeft.minutes} Menit, {timeLeft.seconds} Detik</h3>
         </>
     )
 }
