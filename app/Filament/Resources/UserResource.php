@@ -135,6 +135,33 @@ class UserResource extends Resource
                         'class' => 'text-blue-500 underline hover:text-blue-700'
                     ])
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('whatsapp_message')
+                    ->label('Buka Percakapan')
+                    ->getStateUsing(fn () => 'Whatsapp')
+                    ->url(fn ($record) => toWhatsappLink($record->whatsapp_number))
+                    ->openUrlInNewTab()
+                    ->extraAttributes([
+                        'class' => 'text-green-500 underline hover:text-green-700'
+                    ])
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('whatsapp_payment_notification')
+                    ->label('Payment Notification')
+                    ->getStateUsing(fn () => 'Whatsapp')
+                    ->url(fn ($record) => getPaymentNotification($record->robot_category, $record->whatsapp_number))
+                    ->openUrlInNewTab()
+                    ->extraAttributes([
+                        'class' => 'text-green-500 underline hover:text-green-700'
+                    ])
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('whatsapp_payment_success_message')
+                    ->label('Payment Berhasil')
+                    ->getStateUsing(fn () => 'Whatsapp')
+                    ->url(fn ($record) => getPaymentApprovedMessage($record->robot_category, $record->whatsapp_number))
+                    ->openUrlInNewTab()
+                    ->extraAttributes([
+                        'class' => 'text-green-500 underline hover:text-green-700'
+                    ])
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d F, Y')
                     ->sortable()

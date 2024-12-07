@@ -82,7 +82,7 @@ class PaymentResource extends Resource
                 Tables\Columns\TextColumn::make('whatsapp_link')
                     ->label('Kirim Pesan WhatsApp')
                     ->getStateUsing(fn () => 'Kirim')
-                    ->url(fn ($record) => getWhatsappMessage($record->user->robot_category, $record->user->whatsapp_number))
+                    ->url(fn ($record) => getPaymentApprovedMessage($record->user->robot_category, $record->user->whatsapp_number))
                     ->openUrlInNewTab()
                     ->extraAttributes([
                         'class' => 'text-green-500 underline hover:text-green-700'

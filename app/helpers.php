@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Log;
+
 if (! function_exists('getFeeRegistration'))
 {
     function getFeeRegistration(string $name, string | null $agency): string
@@ -81,19 +83,16 @@ if (! function_exists('getParticipantWhatsappURL'))
     }
 }
 
-if( ! function_exists('getWhatsappMessage'))
+if( ! function_exists('getPaymentApprovedMessage'))
 {
-    function getWhatsappMessage(string | null $robot_category, string $whatsapp): string
+    function getPaymentApprovedMessage(string | null $robot_category, string $whatsapp): string
     {
         $category_label = getCategoryName($robot_category);
         $grub_link = getParticipantWhatsappURL($robot_category);
+        $greeting = getGreeting();
+        $greetingLabel = getGreetingLabel($robot_category);
 
-        // if whatsapp start with 08, remove 08 and add 62
-        if (str_starts_with($whatsapp, '08')) {
-            $whatsapp = '62' . substr($whatsapp, 1);
-        }
-
-        $text = "Kami dari panitia Robotic Competition ingin mengonfirmasi bahwa pembayaran Anda telah kami terima. 🙏
+        $text = "{$greeting} {$greetingLabel}, kami dari panitia Robotic Competition ingin mengonfirmasi bahwa pembayaran Anda telah kami terima. 🙏
 
 Silakan bergabung ke grup WhatsApp kategori {$category_label}. Berikut adalah tautannya:
 {$grub_link}
@@ -101,10 +100,27 @@ Silakan bergabung ke grup WhatsApp kategori {$category_label}. Berikut adalah ta
 Jika ada pertanyaan, jangan ragu untuk menghubungi kami.
 Sampai jumpa di kompetisi! 🚀";
 
-        // endcode text with url
-        $encoded_text = rawurlencode($text);
+        return toWhatsappLink($whatsapp, $text);
+    }
+}
 
-        return "https://api.whatsapp.com/send?phone={$whatsapp}&text={$encoded_text}";
+if( ! function_exists('getPaymentNotification') )
+{
+    function getPaymentNotification(string | null $robot_category, string $whatsapp): string
+    {
+        // $category_label = getCategoryName($robot_category);
+        // $grub_link = getParticipantWhatsappURL($robot_category);
+        $greeting = getGreeting();
+        $greetingLabel = getGreetingLabel($robot_category);
+
+        $text = "{$greeting} {$greetingLabel}, untuk menyelesaikan pendaftaran silahkan melakukan pembayaran sesuai nominal yang tertera pada dashboard. Pembayaran dapat dilakukan melalui transfer bank.
+
+Jika sudah melakukan pembayaran, mohon untuk mengunggah bukti pembayaran pada form yang telah disediakan.
+
+Jika kesulitan atau ada hal yang ingin ditanyakan, silahkan {$greetingLabel} kami siap membantu.
+
+Terima kasih banyak 🙏";
+        return toWhatsappLink($whatsapp, $text);
     }
 }
 
@@ -116,5 +132,47 @@ if( ! function_exists('isHamzanwadiStudent'))
 
         $normalizedAgency = strtoupper(trim($agency));
         return str_contains($normalizedAgency, 'UNIVERSITAS HAMZANWADI');
+    }
+}
+
+if( ! function_exists('toWhatsappLink') )
+{
+    function toWhatsappLink(string $whatsapp, string | null $text = null): string
+    {
+        // if whatsapp start with 08, remove 08 and add 62
+        if (str_starts_with($whatsapp, '08')) {
+            $whatsapp = '62' . substr($whatsapp, 1);
+        }
+
+        $encoded_text = rawurlencode($text);
+
+        return "https://api.whatsapp.com/send?phone={$whatsapp}&text={$encoded_text}";
+    }
+}
+
+if ( ! function_exists('getGreeting') )
+{
+    function getGreeting(): string
+    {
+        $hour = (int) now()->format('H');
+
+        return match(true) {
+            $hour >= 0 && $hour < 12 => 'Selamat pagi',
+            $hour >= 12 && $hour < 15 => 'Selamat siang',
+            $hour >= 15 && $hour < 18 => 'Selamat sore',
+            default => 'Selamat malam',
+        };
+    }
+}
+
+if ( ! function_exists('getGreetingLabel') )
+{
+    function getGreetingLabel(string | null $robot_category): string
+    {
+        return match ($robot_category) {
+            'sumo' => 'kak',
+            'avoider' => 'pak',
+            default => 'kak',
+        };
     }
 }
