@@ -4,18 +4,17 @@ use Illuminate\Support\Facades\Log;
 
 if (! function_exists('getFeeRegistration'))
 {
-    function getFeeRegistration(string $name, string | null $agency): string
+    function getFeeRegistration(string $name, ?string $agency): string
     {
-        $isUniversitasHamzanwadi = $agency === 'Universitas Hamzanwadi';
+        $isUniversitasHamzanwadi = isHamzanwadiStudent($agency);
         
-        $fees = [
+        return match($name) {
             'avoider' => 'Rp. 50.000',
             'sumo' => $isUniversitasHamzanwadi ? 'Rp. 50.000' : 'Rp. 75.000',
-            'default' => 'Rp. -'
-        ];
-
-        return $fees[$name] ?? $fees['default'];
-    }}
+            default => 'Rp. -'
+        };
+    }
+}
 
 if (! function_exists('getPaymentStatus'))
 {
@@ -47,6 +46,7 @@ if (! function_exists('getCategoryName'))
         };
     }
 }
+
 if (! function_exists('getParticipantLabel'))
 {
     function getParticipantLabel(string | null $robot_category): string
@@ -83,7 +83,7 @@ if (! function_exists('getParticipantWhatsappURL'))
     }
 }
 
-if( ! function_exists('getPaymentApprovedMessage'))
+if(! function_exists('getPaymentApprovedMessage'))
 {
     function getPaymentApprovedMessage(string | null $robot_category, string $whatsapp): string
     {
@@ -104,7 +104,7 @@ Sampai jumpa di kompetisi! 🚀";
     }
 }
 
-if( ! function_exists('getPaymentNotification') )
+if(! function_exists('getPaymentNotification') )
 {
     function getPaymentNotification(string | null $robot_category, string $whatsapp): string
     {
@@ -124,7 +124,7 @@ Terima kasih banyak 🙏";
     }
 }
 
-if( ! function_exists('isHamzanwadiStudent'))
+if(! function_exists('isHamzanwadiStudent'))
 {
     function isHamzanwadiStudent(string | null $agency): bool
     {
@@ -135,7 +135,7 @@ if( ! function_exists('isHamzanwadiStudent'))
     }
 }
 
-if( ! function_exists('toWhatsappLink') )
+if(! function_exists('toWhatsappLink') )
 {
     function toWhatsappLink(string $whatsapp, string | null $text = null): string
     {
@@ -150,7 +150,7 @@ if( ! function_exists('toWhatsappLink') )
     }
 }
 
-if ( ! function_exists('getGreeting') )
+if (! function_exists('getGreeting') )
 {
     function getGreeting(): string
     {
@@ -165,7 +165,7 @@ if ( ! function_exists('getGreeting') )
     }
 }
 
-if ( ! function_exists('getGreetingLabel') )
+if (! function_exists('getGreetingLabel') )
 {
     function getGreetingLabel(string | null $robot_category): string
     {
