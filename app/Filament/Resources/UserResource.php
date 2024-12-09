@@ -103,11 +103,13 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('agency')
                     ->label('Instansi')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('robot_category')
                     ->label('Kategori Robot')
                     ->sortable()
-                    ->getStateUsing(fn (User $user) => $user->robot_category === 'sumo' ? 'Sumo Game' : 'Avoider (obstacle)'),
+                    ->getStateUsing(fn (User $user) => $user->robot_category === 'sumo' ? 'Sumo Game' : 'Avoider (obstacle)')
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('responsible_person_name')
                     ->label('Ketua/Penanggung Jawab Tim')
                     ->searchable()
