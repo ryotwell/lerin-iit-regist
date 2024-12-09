@@ -28,9 +28,14 @@ function Countdown() {
     }, [])
 
     return (
-        <>
-            <h3 className="text-purple-600 dark:text-purple-400">{timeLeft.days} Hari, {timeLeft.hours} Jam, {timeLeft.minutes} Menit, {timeLeft.seconds} Detik</h3>
-        </>
+        <div className='flex flex-col items-center justify-center'>
+            <div>
+                <h4 className="text-slate-600 dark:text-slate-400">Countdown Pendaftaran:</h4>
+            </div>
+            <div>
+                <h3 className="text-purple-600 dark:text-purple-400 text-xl font-medium">{timeLeft.days} Hari, {timeLeft.hours} Jam, {timeLeft.minutes} Menit, {timeLeft.seconds} Detik</h3>
+            </div>
+        </div>
     )
 }
 
