@@ -179,7 +179,7 @@ class UserResource extends Resource
                 Tables\Filters\SelectFilter::make('robot_category')
                     ->options([
                         'sumo' => 'Sumo Game',
-                        'avoider' => 'Avoider (Obstacle)',
+                        'avoider' => 'Avoider (obstacle)',
                     ])
                     ->label('Kategori Robot'),
                 Tables\Filters\SelectFilter::make('payment_status')
