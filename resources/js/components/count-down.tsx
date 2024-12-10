@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 function Countdown() {
-    const targetDate = new Date('December 11, 2024').getTime()
+    const targetDate = new Date('December 15, 2024').getTime()
     const [timeLeft, setTimeLeft] = React.useState({
         days: 0,
         hours: 0,

@@ -22,7 +22,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class PanelPanelProvider extends PanelProvider
 {
-    private string $targetDate = '2024-12-11';
+    private string $targetDate = '2024-15-11';
 
     public function panel(Panel $panel): Panel
     {
