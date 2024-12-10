@@ -176,9 +176,9 @@ if (! function_exists('getGreetingLabel') )
         };
     }
 }
-if(! function_exists('getInstansiLogo'))
+if(! function_exists('getAgencyLogo'))
 {
-    function getInstansiLogo(string $agency): string | null
+    function getAgencyLogo(string $agency): string | null
     {
         $normalizedAgency = strtoupper(trim($agency));
         

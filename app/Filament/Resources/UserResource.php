@@ -73,21 +73,21 @@ class UserResource extends Resource
                             ->label('Nomor Whatsapp')
                             ->numeric(),
                         Forms\Components\TextInput::make('responsible_person_nim_or_nis')
-                            ->label(fn (callable $get) => getParticipantIdentifierLabel($get('robot_category'))),
+                            ->label('NIM/NIS/NIK'),
                 ]),
                 Forms\Components\Fieldset::make('Anggota Tim 1')
                     ->schema([
                         Forms\Components\TextInput::make('participant_one_name')
                             ->label('Nama'),
                         Forms\Components\TextInput::make('participant_one_nim_or_nis')
-                            ->label(fn (callable $get) => getParticipantIdentifierLabel($get('robot_category'))),
+                            ->label('NIM/NIS/NIK'),
                 ]),
                 Forms\Components\Fieldset::make('Anggota Tim 2')
                     ->schema([
                         Forms\Components\TextInput::make('participant_two_name')
                             ->label('Nama'),
                         Forms\Components\TextInput::make('participant_two_nim_or_nis')
-                            ->label(fn (callable $get) => getParticipantIdentifierLabel($get('robot_category'))),
+                            ->label('NIM/NIS/NIK'),
                 ]),
             ]);
     }
