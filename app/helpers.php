@@ -183,8 +183,8 @@ if(! function_exists('getAgencyLogo'))
         $normalizedAgency = strtoupper(trim($agency));
         
         $logos = [
-            'UNIVERSITAS HAMZANWADI' => '/instansi/hamzanwadi.jpg',
-            'UNIVERSITAS MATARAM' => '/instansi/mataram.png',
+            'UNIVERSITAS HAMZANWADI' => '/instansi/univeristas-hamzanwadi.png',
+            'UNIVERSITAS MATARAM' => '/instansi/univeristas-mataram.png',
             'SMAIT TUNAS CENDEKIA MATARAM' => '/instansi/smaittunascendekiamataram.png',
             'SMPIT TUNAS CENDEKIA MATARAM' => '/instansi/smpittunascendekiamataram.png',
             'SMKN 2 KURIPAN' => '/instansi/smkn2kuripan.png',
