@@ -176,3 +176,27 @@ if (! function_exists('getGreetingLabel') )
         };
     }
 }
+if(! function_exists('getInstansiLogo'))
+{
+    function getInstansiLogo(string $agency): string | null
+    {
+        $normalizedAgency = strtoupper(trim($agency));
+        
+        $logos = [
+            'UNIVERSITAS HAMZANWADI' => '/instansi/hamzanwadi.jpg',
+            'UNIVERSITAS MATARAM' => '/instansi/mataram.png',
+            'SMAIT TUNAS CENDEKIA MATARAM' => '/instansi/smaittunascendekiamataram.png',
+            'SMPIT TUNAS CENDEKIA MATARAM' => '/instansi/smpittunascendekiamataram.png',
+            'SMKN 2 KURIPAN' => '/instansi/smkn2kuripan.png',
+            'SMKN 1 PRINGGABAYA' => '/instansi/smkn1pringgabaya.png',
+            'SMK NEGERI 1 PRINGGABAYA' => '/instansi/smkn1pringgabaya.png'
+        ];
+
+        foreach ($logos as $name => $path) {
+            if (str_contains($normalizedAgency, $name)) {
+                return $path;
+            }
+        }
+
+        return null;
+    }}

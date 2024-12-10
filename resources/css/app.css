@@ -4,7 +4,7 @@
 @tailwind variants;
 
 .content {
-  @apply px-6 lg:px-96;
+  @apply px-6 lg:px-96 xl:px-80;
 }
 
 @layer base {
