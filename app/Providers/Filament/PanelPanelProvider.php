@@ -26,16 +26,12 @@ class PanelPanelProvider extends PanelProvider
 
     public function panel(Panel $panel): Panel
     {
-
-        return $panel
+        $response = $panel
             ->default()
             ->defaultThemeMode(ThemeMode::Dark)
             ->id('panel')
             ->path('panel')
             ->login()
-            ->registration(
-                now() <= $this->targetDate ? CustomRegister::class : null
-            )
             ->colors([
                 'primary' => Color::Blue,
             ])
@@ -70,5 +66,13 @@ class PanelPanelProvider extends PanelProvider
                 // This is the view that will be rendered
                 fn () => view('footer'),
             );
+
+        if( now() <= $this->targetDate ) {
+            $response->registration(
+                CustomRegister::class
+            );
+        }
+
+        return $response;
     }
 }
