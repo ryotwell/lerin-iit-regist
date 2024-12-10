@@ -23,12 +23,16 @@
                         :
                     </th>
                     <td class="px-6 py-4">
-                        <div class="flex items-center">
-                            <img src="{{ getAgencyLogo(auth()->user()->agency) }}" alt="" class="w-8 h-8">
-                            <span class="ml-2">
-                                {{ auth()->user()->agency }}
-                            </span>
-                        </div>
+                        @if (getAgencyLogo(auth()->user()->agency))
+                            <div class="flex items-center">
+                                <img src="{{ getAgencyLogo(auth()->user()->agency) }}" alt="" class="w-8 h-8">
+                                <span class="ml-2">
+                                    {{ auth()->user()->agency }}
+                                </span>
+                            </div>
+                        @else
+                            {{ auth()->user()->agency }}
+                        @endif
                     </td>
                 </tr>
                 <tr>

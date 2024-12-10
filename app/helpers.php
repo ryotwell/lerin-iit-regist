@@ -188,8 +188,8 @@ if(! function_exists('getAgencyLogo'))
             'SMAIT TUNAS CENDEKIA MATARAM' => '/instansi/smaittunascendekiamataram.png',
             'SMPIT TUNAS CENDEKIA MATARAM' => '/instansi/smpittunascendekiamataram.png',
             'SMKN 2 KURIPAN' => '/instansi/smkn2kuripan.png',
-            'SMKN 1 PRINGGABAYA' => '/instansi/smkn1pringgabaya.png',
-            'SMK NEGERI 1 PRINGGABAYA' => '/instansi/smkn1pringgabaya.png'
+            'SMK NEGERI 1 PRINGGABAYA' => '/instansi/smkn1pringgabaya.png',
+            'MAN 1 LOMBOK TIMUR' => '/instansi/man1lomboktimur.png',
         ];
 
         foreach ($logos as $name => $path) {
