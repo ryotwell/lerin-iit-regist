@@ -1,5 +1,10 @@
 <x-filament-widgets::widget>
     <x-filament::section>
+        <ul class="mb-4">
+            @foreach ($groupedData as $agency => $categories)
+                <li>{{ $agency }} : {{ $categories }}</li>
+            @endforeach
+        </ul>
         <div class="space-y-6">
             <form action="{{ route('filament.widgets.export-data-widget.export') }}" method="POST">
                 @csrf

@@ -3,7 +3,9 @@
 namespace App\Filament\Widgets;
 
 use App\Exports\UsersExport;
+use App\Models\User;
 use Filament\Widgets\Widget;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExportDataWidget extends Widget
@@ -11,6 +13,26 @@ class ExportDataWidget extends Widget
     protected static string $view = 'filament.widgets.export-data-widget';
 
     protected static ?int $sort = 99;
+
+    protected function getViewData(): array
+    {
+        $data = User::select('agency', 'robot_category', DB::raw('count(*) as total'))
+            ->groupBy('agency', 'robot_category')
+            ->get();
+
+        // Format hasil untuk ditampilkan
+        $groupedData = $data->groupBy('agency')->map(function ($agencyData) {
+            $result = $agencyData->map(function ($item) {
+                return $item->robot_category . ': ' . $item->total;
+            })->join(', ');
+
+            return $result;
+        });
+
+        return [
+            'groupedData' => $groupedData,
+        ];
+    }
 
     public function export()
     {
