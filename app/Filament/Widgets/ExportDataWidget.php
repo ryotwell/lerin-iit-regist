@@ -20,7 +20,6 @@ class ExportDataWidget extends Widget
             ->groupBy('agency', 'robot_category')
             ->get();
 
-        // Format hasil untuk ditampilkan
         $groupedData = $data->groupBy('agency')->map(function ($agencyData) {
             $result = $agencyData->map(function ($item) {
                 return $item->robot_category . ': ' . $item->total;
@@ -37,7 +36,7 @@ class ExportDataWidget extends Widget
     public function export()
     {
         if (!auth()->user()->hasRole('admin')) {
-            abort(403, 'Akses tidak diizinkan.');
+            return abort(403, 'Akses tidak diizinkan.');
         }
 
         if (request()->has('robot_category')) {

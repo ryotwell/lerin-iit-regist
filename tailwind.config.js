@@ -27,7 +27,8 @@ export default {
     theme: {
     	extend: {
     		fontFamily: {
-    			sans: ['Figtree', ...defaultTheme.fontFamily.sans]
+    			sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+				anton: ['Anton', 'sans-serif'],
     		},
     		borderRadius: {
     			lg: 'var(--radius)',
