@@ -1,16 +1,32 @@
 {
+  "_button-BzBV1qsE.js": {
+    "file": "assets/button-BzBV1qsE.js",
+    "name": "button"
+  },
   "resources/css/app.css": {
     "file": "assets/app-BQi-YMdV.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.tsx": {
-    "file": "assets/app-L1qN0S7F.js",
+    "file": "assets/app-C-p-9ybf.js",
     "name": "app",
     "src": "resources/js/app.tsx",
     "isEntry": true,
+    "imports": [
+      "_button-BzBV1qsE.js"
+    ],
     "css": [
       "assets/app-DvB2Xm2x.css"
+    ]
+  },
+  "resources/js/id-cards.tsx": {
+    "file": "assets/id-cards-BGul260a.js",
+    "name": "id-cards",
+    "src": "resources/js/id-cards.tsx",
+    "isEntry": true,
+    "imports": [
+      "_button-BzBV1qsE.js"
     ]
   }
 }
