@@ -22,8 +22,6 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class PanelPanelProvider extends PanelProvider
 {
-    private string $targetDate = '2024-14-11';
-
     public function panel(Panel $panel): Panel
     {
         $response = $panel
@@ -35,6 +33,9 @@ class PanelPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Blue,
             ])
+            // ->registration(
+            //     CustomRegister::class
+            // )
             ->viteTheme('resources/css/app.css')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -66,12 +67,6 @@ class PanelPanelProvider extends PanelProvider
                 // This is the view that will be rendered
                 fn () => view('footer'),
             );
-
-        if( now() <= $this->targetDate ) {
-            $response->registration(
-                CustomRegister::class
-            );
-        }
 
         return $response;
     }
