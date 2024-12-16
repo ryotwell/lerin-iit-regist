@@ -83,6 +83,26 @@ if (! function_exists('getParticipantWhatsappURL'))
     }
 }
 
+if(! function_exists('getJoinMessage'))
+{
+    function getJoinMessage(string | null $robot_category, string $whatsapp): string
+    {
+        $category_label = getCategoryName($robot_category);
+        $grub_link = getParticipantWhatsappURL($robot_category);
+        $greeting = getGreeting();
+        $greetingLabel = getGreetingLabel($robot_category);
+
+        $text = "{$greeting} {$greetingLabel}, untuk mendapatkan informasi terkait kompetisi silakan bergabung ke grup WhatsApp kategori {$category_label} melalui tautan berikut:
+{$grub_link}
+
+Mohon segera bergabung agar tidak ketinggalan informasi penting dari panitia, jangan lupa di share juga ke anggota tim lainnya juga ya {$greetingLabel}. Terima kasih 🙏
+
+Robotic Competition 2024 🤖";
+
+        return toWhatsappLink($whatsapp, $text);
+    }
+}
+
 if(! function_exists('getPaymentApprovedMessage'))
 {
     function getPaymentApprovedMessage(string | null $robot_category, string $whatsapp): string
@@ -119,7 +139,8 @@ Jika sudah melakukan pembayaran, mohon untuk mengunggah bukti pembayaran pada fo
 
 Jika kesulitan atau ada hal yang ingin ditanyakan, silahkan {$greetingLabel} kami siap membantu.
 
-Terima kasih banyak 🙏";
+Terima kasih banyak 🙏
+Robotic Competition 2024 🤖";
         return toWhatsappLink($whatsapp, $text);
     }
 }

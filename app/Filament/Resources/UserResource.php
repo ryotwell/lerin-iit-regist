@@ -141,10 +141,19 @@ class UserResource extends Resource
                         'class' => 'text-blue-500 underline hover:text-blue-700'
                     ])
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('whatsapp_message')
+                Tables\Columns\TextColumn::make('whatsapp_open_chat')
                     ->label('Buka Percakapan')
                     ->getStateUsing(fn () => 'Whatsapp')
                     ->url(fn ($record) => toWhatsappLink($record->whatsapp_number))
+                    ->openUrlInNewTab()
+                    ->extraAttributes([
+                        'class' => 'text-green-500 underline hover:text-green-700'
+                    ])
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('whatsapp_join_chat')
+                    ->label('Suruh Masuk')
+                    ->getStateUsing(fn () => 'Whatsapp')
+                    ->url(fn ($record) => getJoinMessage($record->robot_category, $record->whatsapp_number))
                     ->openUrlInNewTab()
                     ->extraAttributes([
                         'class' => 'text-green-500 underline hover:text-green-700'
