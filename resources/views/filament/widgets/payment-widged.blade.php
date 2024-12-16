@@ -1,6 +1,12 @@
 <x-filament-widgets::widget>
     <x-filament::section>
         <div class="md:max-w-3xl">
+            @if (isHamzanwadiStudent(auth()->user()->agency))
+                Terimakasih telah mendaftar, silahkan masuk ke grub whatsapp untuk informasi selanjutnya.
+                <x-filament::link href="{{ getParticipantWhatsappURL(auth()->user()->robot_category) }}" class="underline mb-4" target="_blank" rel="noreferrer">
+                    Masuk ke grub whatsapp
+                </x-filament::link>
+            @endif
             @if (auth()->user()->payment->status === 'approved')
             <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400">
                 <div class="mb-4">

@@ -61,11 +61,14 @@ class UserResource extends Resource
                         'admin' => 'Admin',
                         'user' => 'User',
                     ])
-                    ->required()
-                ,
+                    ->required(),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required(),
+                Forms\Components\TextInput::make('password')
+                    ->password()
+                    ->required(fn (string $operation): bool => $operation === 'create')
+                    ->visible(fn (string $operation): bool => $operation === 'create'),
                 Forms\Components\Fieldset::make('Ketua Tim/Penanggung Jawab')
                     ->schema([
                         Forms\Components\TextInput::make('responsible_person_name')

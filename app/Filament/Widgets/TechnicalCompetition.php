@@ -16,6 +16,6 @@ class TechnicalCompetition extends Widget
 
     public static function canView(): bool
     {
-        return auth()->user()->payment->status === 'approved';
+        return auth()->user()->payment->status === 'approved' || isHamzanwadiStudent(auth()->user()->agency);
     }
 }

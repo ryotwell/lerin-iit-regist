@@ -11,6 +11,6 @@
             </div>
         </div>
 
-        <p>Technical Meeting tanggal 15 Desember 2024 secara online</p>
+        <p>Technical Meeting tanggal 17 Desember 2024 secara online</p>
     </x-filament::section>
 </x-filament-widgets::widget>
