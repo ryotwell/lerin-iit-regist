@@ -33,9 +33,9 @@ class PanelPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Blue,
             ])
-            ->registration(
-                CustomRegister::class
-            )
+            // ->registration(
+            //     CustomRegister::class
+            // )
             ->viteTheme('resources/css/app.css')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
