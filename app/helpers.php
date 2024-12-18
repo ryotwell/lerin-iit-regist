@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
 if (! function_exists('getFeeRegistration'))
@@ -126,22 +127,26 @@ Sampai jumpa di kompetisi! 🚀";
 
 if(! function_exists('getPaymentNotification') )
 {
-    function getPaymentNotification(string | null $robot_category, string $whatsapp): string
+    function getPaymentNotification(User $user): string
     {
-        // $category_label = getCategoryName($robot_category);
-        // $grub_link = getParticipantWhatsappURL($robot_category);
-        $greeting = getGreeting();
-        $greetingLabel = getGreetingLabel($robot_category);
+        $registration_fee = getFeeRegistration($user->robot_category, $user->agency);
 
-        $text = "{$greeting} {$greetingLabel}, untuk menyelesaikan pendaftaran silahkan melakukan pembayaran sesuai nominal yang tertera pada dashboard. Pembayaran dapat dilakukan melalui transfer bank.
+        $text = "Kepada {$user->responsible_person_name}
+Tim: {$user->name}
+Kategori: {$user->robot_category}
+Biaya Pendaftaran: {$registration_fee}
 
-Jika sudah melakukan pembayaran, mohon untuk mengunggah bukti pembayaran pada form yang telah disediakan.
+Terima kasih atas partisipasi Anda dalam Robotic Competition 2024. Kami mengingatkan bahwa batas akhir pembayaran biaya pendaftaran adalah tanggal 20 Desember 2024.
 
-Jika kesulitan atau ada hal yang ingin ditanyakan, silahkan {$greetingLabel} kami siap membantu.
+Apabila pembayaran tidak diselesaikan sebelum tanggal tersebut, maka kami dengan berat hati harus mengeliminasi partisipasi Tim {$user->name} dalam kompetisi ini.
 
-Terima kasih banyak 🙏
-Robotic Competition 2024 🤖";
-        return toWhatsappLink($whatsapp, $text);
+Harap segera lakukan pembayaran dan konfirmasi kepada panitia untuk memastikan keikutsertaan Anda.
+
+Atas perhatian dan kerja samanya, kami ucapkan terima kasih.
+
+Hormat kami,
+Panitia Robotic Competition 2024";
+        return toWhatsappLink($user->whatsapp_number, $text);
     }
 }
 
