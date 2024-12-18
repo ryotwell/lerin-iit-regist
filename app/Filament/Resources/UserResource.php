@@ -162,7 +162,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('whatsapp_payment_notification')
                     ->label('Payment Notification')
                     ->getStateUsing(fn () => 'Whatsapp')
-                    ->url(fn ($record) => getPaymentNotification($record->robot_category, $record->whatsapp_number))
+                    ->url(fn ($record) => getPaymentNotification($record))
                     ->openUrlInNewTab()
                     ->extraAttributes([
                         'class' => 'text-green-500 underline hover:text-green-700'

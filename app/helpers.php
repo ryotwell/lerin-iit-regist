@@ -131,20 +131,15 @@ if(! function_exists('getPaymentNotification') )
     {
         $registration_fee = getFeeRegistration($user->robot_category, $user->agency);
 
-        $text = "Kepada {$user->responsible_person_name}
-Tim: {$user->name}
-Kategori: {$user->robot_category}
-Biaya Pendaftaran: {$registration_fee}
+        $text = "Halo, {$user->name},
 
-Terima kasih atas partisipasi Anda dalam Robotic Competition 2024. Kami mengingatkan bahwa batas akhir pembayaran biaya pendaftaran adalah tanggal 20 Desember 2024.
+Kami mengingatkan agar segera menyelesaikan pembayaran biaya pendaftaran sebesar {$registration_fee},- untuk Robotic Competition 2024 sebelum tanggal 20 Desember 2024. Bukti transfer dapat diunggah melalui dashboard tim di website iit.lerinntb.com atau dikirimkan langsung ke sini.
 
-Apabila pembayaran tidak diselesaikan sebelum tanggal tersebut, maka kami dengan berat hati harus mengeliminasi partisipasi Tim {$user->name} dalam kompetisi ini.
+Mohon diperhatikan, jika pembayaran tidak diselesaikan sesuai batas waktu yang telah ditentukan, maka tim Anda akan dinyatakan tereliminasi.
 
-Harap segera lakukan pembayaran dan konfirmasi kepada panitia untuk memastikan keikutsertaan Anda.
+Terima kasih atas perhatian dan kerja samanya.
 
-Atas perhatian dan kerja samanya, kami ucapkan terima kasih.
-
-Hormat kami,
+Salam,
 Panitia Robotic Competition 2024";
         return toWhatsappLink($user->whatsapp_number, $text);
     }
