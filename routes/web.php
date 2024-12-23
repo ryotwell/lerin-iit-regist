@@ -14,7 +14,6 @@ Route::post('/filament/widgets/export-data-widget/export', [ExportDataWidget::cl
 
 // api
 Route::get('/api/teams', function() {
-
     if(! auth()->user()->hasRole('admin') ) return abort(403);
 
     $users = User::whereHas('payment', function ($query) {
