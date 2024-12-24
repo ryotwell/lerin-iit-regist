@@ -1,8 +1,10 @@
 <?php
 
+use App\Exports\TeamParticipants;
 use App\Filament\Widgets\ExportDataWidget;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,3 +24,7 @@ Route::get('/api/teams', function() {
 
     return $users;
 })->middleware('auth');
+
+Route::get('/api/teams/participants', function() {
+    return Excel::download(new TeamParticipants, 'participants.xlsx');
+});
