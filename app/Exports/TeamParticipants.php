@@ -22,7 +22,9 @@ class TeamParticipants implements FromCollection
             ];
         });
 
-        return $names->map(function($name) {
+        return $names->filter(function($name) {
+            return !empty($name);
+        })->map(function($name) {
             return ['name' => $name];
         })->values();
     }
