@@ -26,5 +26,20 @@ Route::get('/api/teams', function() {
 })->middleware('auth');
 
 Route::get('/api/teams/participants', function() {
-    return Excel::download(new TeamParticipants, 'participants.xlsx');
+    $files = [
+        Excel::download(new TeamParticipants('avoider'), 'avoider-participants.xlsx'),
+        Excel::download(new TeamParticipants('sumo'), 'sumo-participants.xlsx')
+    ];
+    
+    $zip = new ZipArchive();
+    $zipFileName = 'participants.zip';
+    $zip->open($zipFileName, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+    
+    foreach ($files as $file) {
+        $zip->addFromString(basename($file->getFile()), file_get_contents($file->getFile()));
+    }
+    
+    $zip->close();
+    
+    return response()->download($zipFileName)->deleteFileAfterSend();
 });
