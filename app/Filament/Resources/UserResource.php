@@ -119,6 +119,31 @@ class UserResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('participant_one_name')
+                    ->label('Peserta 1')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('participant_two_name')
+                    ->label('Peserta 2')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('responsible_person_nim_or_nis')
+                    ->label('NIM/NIS Ketua/PJT')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('participant_one_nim_or_nis')
+                    ->label('NIM/NIS Anggota 1')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('participant_two_nim_or_nis')
+                    ->label('NIM/NIS Anggota 2')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('whatsapp_number')
                     ->label('Whatsapp')
                     ->searchable()
